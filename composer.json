@@ -1,0 +1,74 @@
+{
+    "name": "fruivita/corporate",
+    "description": "Importador de Estrutura Corporativa em formato XML para aplicações Laravel",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "fruivita",
+        "laravel",
+        "corporate",
+        "xml",
+        "importer"
+    ],
+    "authors": [
+        {
+            "name": "Fábio Cassiano",
+            "email": "fcno.dev@gmail.com",
+            "homepage": "https://github.com/fcno",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/fruivita/corporate",
+    "require": {
+        "php": "^8.0",
+        "ext-xmlreader": "*",
+        "illuminate/collections": "^9.2",
+        "illuminate/database": "^9.2",
+        "illuminate/support": "^9.2"
+    },
+    "require-dev": {
+        "nunomaduro/larastan": "^2.0",
+        "orchestra/testbench": "^7.1",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.2",
+        "phpstan/phpstan": "^1.4",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "FruiVita\\Corporate\\": "src/",
+            "FruiVita\\Corporate\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FruiVita\\Corporate\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "Corporate": "FruiVita\\Corporate\\Facades\\Corporate"
+            },
+            "providers": [
+                "FruiVita\\Corporate\\CorporateServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse --ansi --memory-limit 1G --error-format=github --debug",
+        "coverage": "composer test -- --coverage",
+        "test": "vendor/bin/pest --colors=always"
+    }
+}
