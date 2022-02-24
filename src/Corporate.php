@@ -101,7 +101,7 @@ class Corporate implements IImportable
         if ($this->shouldLog()) {
             Log::log(
                 level: $this->level,
-                message: __('corporate::Start of corporate structure import'),
+                message: __('Start of corporate structure import'),
                 context: [
                     'file_path' => $this->file_path,
                 ]
@@ -136,7 +136,7 @@ class Corporate implements IImportable
         if ($this->shouldLog()) {
             Log::log(
                 level: $this->level,
-                message: __('corporate::End of corporate structure import'),
+                message: __('End of corporate structure import'),
                 context: [
                     'file_path' => $this->file_path,
                 ]

@@ -207,7 +207,7 @@ abstract class BaseImporter implements IImportable
         if ($validator->fails()) {
             $this->log(
                 'warning',
-                __('corporate::Validation failed!'),
+                __('Validation failed!'),
                 [
                     'input' => $inputs,
                     'error_bag' => $validator->getMessageBag()->toArray(),

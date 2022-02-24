@@ -13,6 +13,6 @@ class FileNotReadableException extends Exception
 {
     public function __construct()
     {
-        parent::__construct(__('corporate::O arquivo informado não pôde ser lido!'));
+        parent::__construct(__('The file entered could not be read!'));
     }
 }
