@@ -38,14 +38,12 @@ class TestCase extends Orchestra
     {
         Schema::dropAllTables();
 
-        include_once __DIR__ . '/../database/migrations/create_occupations_table.php.stub';
-        include_once __DIR__ . '/../database/migrations/create_duties_table.php.stub';
-        include_once __DIR__ . '/../database/migrations/create_departments_table.php.stub';
-        include_once __DIR__ . '/../database/migrations/create_persons_table.php.stub';
+        $files = glob(__DIR__ . '/../database/migrations/*.php.stub', GLOB_NOSORT);
 
-        (new \CreateOccupationsTable())->up();
-        (new \CreateDutiesTable())->up();
-        (new \CreateDepartmentsTable())->up();
-        (new \CreatePersonsTable())->up();
+        foreach($files as $file) {
+            $table = include $file;
+
+            $table->up();
+        }
     }
 }
