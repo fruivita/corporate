@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Função comissionada de uma determinada pessoa
+ * Função comissionada de uma determinada pessoa.
  *
  * @see https://laravel.com/docs/8.x/eloquent
  */

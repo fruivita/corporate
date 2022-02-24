@@ -41,7 +41,7 @@ class TestCase extends Orchestra
 
         $files = glob(__DIR__ . '/../database/migrations/*.php.stub', GLOB_NOSORT);
 
-        foreach($files as $file) {
+        foreach ($files as $file) {
             $table = include $file;
 
             $table->up();

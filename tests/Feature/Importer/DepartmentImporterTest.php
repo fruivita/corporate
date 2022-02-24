@@ -48,7 +48,7 @@ test('cria os logs para os departments (lotações) inválidos', function () {
             }
         );
 
-        DepartmentImporter::make()->import($this->file_path);
+    DepartmentImporter::make()->import($this->file_path);
 
     expect(Department::count())->toBe(5);
 });
