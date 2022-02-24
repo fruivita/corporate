@@ -34,7 +34,7 @@ test('cria os logs para as occupations (cargos) inválidas', function () {
             }
         );
 
-        OccupationImporter::make()->import($this->file_path);
+    OccupationImporter::make()->import($this->file_path);
 
     expect(Occupation::count())->toBe(3);
 });

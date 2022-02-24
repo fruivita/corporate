@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Lotação de uma determinada pessoa
+ * Lotação de uma determinada pessoa.
  *
  * @see https://laravel.com/docs/8.x/eloquent
  */
