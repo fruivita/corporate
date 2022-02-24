@@ -63,7 +63,7 @@ class Corporate implements IImportable
     }
 
     /**
-     * Verfica se o mimetype do arquivo é permitido.
+     * Verfica se o mime type do arquivo é permitido.
      *
      * @param string $file_path full path
      *
