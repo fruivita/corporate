@@ -17,7 +17,8 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'FruiVita\\Corporate\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            // @phpstan-ignore-next-line
+            fn ($modelName) => 'FruiVita\\Corporate\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
