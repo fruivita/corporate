@@ -22,7 +22,7 @@ class CorporateServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $this->loadTranslationsFrom(__DIR__ . '/../lang/', 'corporate');
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../lang', 'corporate');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
