@@ -1,0 +1,35 @@
+includes:
+  - ./vendor/nunomaduro/larastan/extension.neon
+  - ./vendor/phpstan/phpstan-deprecation-rules/rules.neon
+
+parameters:
+  paths:
+    - config
+    - database
+    - src
+    - tests
+
+  # The level 9 is the highest level
+  # https://phpstan.org/user-guide/rule-levels
+  level: 5
+
+  # https://phpstan.org/config-reference#universal-object-crates
+  universalObjectCratesClasses:
+    - FruiVita\Corporate\Models\Occupation
+    - FruiVita\Corporate\Models\Duty
+    - FruiVita\Corporate\Models\Department
+    - FruiVita\Corporate\Models\Person
+
+  # https://phpstan.org/user-guide/ignoring-errors
+  ignoreErrors:
+    -
+      message: '#Undefined variable: \$this#'
+      path: tests/*
+
+  tmpDir: build/phpstan
+
+  checkOctaneCompatibility: true
+
+  checkModelProperties: true
+
+  checkMissingIterableValueType: false
