@@ -43,19 +43,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Shutdown Ubuntu MySQL (SUDO)
-        run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
-
-      - name: Set up MySQL
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          host port: 3306 # Optional, default value is 3306. The port of host
-          character set server: 'utf8mb4' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
-          collation server: 'utf8mb4_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
-          mysql version: 'latest' # Optional, default value is "latest". The version of the MySQL
-          mysql database: 'package' # Optional, default value is "test". The specified database which will be create
-          mysql user: ${{ secrets.MYSQL_DATABASE_USER }} # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
-          mysql password: ${{ secrets.MYSQL_DATABASE_PASSWORD }} # Required if "mysql user" exists. The password for the "mysql user"
+      - name: Setup MySql
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE package;' -uroot -proot
+          mysql -e 'SHOW DATABASES;' -uroot -proot
+          mysql -V
 
       - name: Cache dependencies
         uses: actions/cache@v2
