@@ -28,3 +28,9 @@ test('lança exceção ao tentar cadastrar lotação com campo inválido', funct
     ['acronym', Str::random(51), 'Data too long for column'], //campo aceita no máximo 50 caracteres
     ['acronym', null,            'cannot be null'],           //campo obrigatório
 ]);
+
+test('lança exceção ao tentar definir relacionamento inválido, isto é, com lotação pai inexistente', function () {
+    expect(
+        fn () => Department::factory()->create(['parent_department' => 10])
+    )->toThrow(QueryException::class, 'Cannot add or update a child row');
+});
