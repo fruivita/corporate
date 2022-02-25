@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Lotação de uma determinada pessoa.
  *
- * @see https://laravel.com/docs/8.x/eloquent
+ * @see https://laravel.com/docs/9.x/eloquent
  */
 class Department extends Model
 {

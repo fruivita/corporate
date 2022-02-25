@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Função comissionada de uma determinada pessoa.
  *
- * @see https://laravel.com/docs/8.x/eloquent
+ * @see https://laravel.com/docs/9.x/eloquent
  */
 class Duty extends Model
 {

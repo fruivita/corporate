@@ -2,7 +2,7 @@
 
 /**
  * @see https://pestphp.com/docs/
- * @see https://laravel.com/docs/8.x/mocking
+ * @see https://laravel.com/docs/9.x/mocking
  */
 
 use FruiVita\Corporate\Importer\OccupationImporter;

@@ -5,9 +5,9 @@ namespace FruiVita\Corporate;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * @see https://laravel.com/docs/8.x/packages
- * @see https://laravel.com/docs/8.x/packages#service-providers
- * @see https://laravel.com/docs/8.x/providers
+ * @see https://laravel.com/docs/9.x/packages
+ * @see https://laravel.com/docs/9.x/packages#service-providers
+ * @see https://laravel.com/docs/9.x/providers
  */
 class CorporateServiceProvider extends ServiceProvider
 {

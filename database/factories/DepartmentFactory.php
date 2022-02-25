@@ -6,7 +6,7 @@ use FruiVita\Corporate\Models\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @see https://laravel.com/docs/8.x/database-testing
+ * @see https://laravel.com/docs/9.x/database-testing
  * @see https://fakerphp.github.io/
  */
 class DepartmentFactory extends Factory

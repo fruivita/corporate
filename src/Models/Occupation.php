@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Cargo de uma determinada pessoa.
  *
- * @see https://laravel.com/docs/8.x/eloquent
+ * @see https://laravel.com/docs/9.x/eloquent
  */
 class Occupation extends Model
 {
