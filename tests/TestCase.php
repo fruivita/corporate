@@ -39,7 +39,7 @@ class TestCase extends Orchestra
     {
         Schema::dropAllTables();
 
-        $files = glob(__DIR__ . '/../database/migrations/*.php.stub', GLOB_NOSORT);
+        $files = glob(__DIR__ . '/../database/migrations/*.php.stub');
 
         foreach ($files as $file) {
             $table = include $file;
