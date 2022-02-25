@@ -7,7 +7,7 @@
 use FruiVita\Corporate\Models\Occupation;
 use FruiVita\Corporate\Models\Person;
 
-test('uma occupation (cargo) possui vários persons (pessoas)', function () {
+test('uma cargo possui vários pessoas', function () {
     $amount = 3;
 
     Occupation::factory()

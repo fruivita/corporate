@@ -13,7 +13,7 @@ test('make retorna o objeto da classe', function () {
     expect(OccupationImporter::make())->toBeInstanceOf(OccupationImporter::class);
 });
 
-test('consegue importar as occupations (cargos) do arquivo corporativo', function () {
+test('consegue importar os cargos do arquivo corporativo', function () {
     // forçar a execução de duas queries em pontos distintos e testá-las
     config(['corporate.maxupsert' => 2]);
 
@@ -25,7 +25,7 @@ test('consegue importar as occupations (cargos) do arquivo corporativo', functio
     ->and($occupations->pluck('name'))->toMatchArray(['Cargo 1', 'Cargo 2', 'Cargo 3']);
 });
 
-test('cria os logs para as occupations (cargos) inválidas', function () {
+test('cria os logs para as cargos inválidas', function () {
     Log::shouldReceive('log')
         ->times(6)
         ->withArgs(

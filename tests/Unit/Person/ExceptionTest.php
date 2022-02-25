@@ -8,7 +8,7 @@ use FruiVita\Corporate\Models\Person;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
 
-test('lança exceção ao tentar cadastrar persons (pessoas) em duplicidade, isto é, com siglas iguais', function () {
+test('lança exceção ao tentar cadastrar pessoas em duplicidade, isto é, com siglas iguais', function () {
     expect(
         fn () => Person::factory()
                     ->count(2)
@@ -16,7 +16,7 @@ test('lança exceção ao tentar cadastrar persons (pessoas) em duplicidade, ist
     )->toThrow(QueryException::class, 'Duplicate entry');
 });
 
-test('lança exceção ao tentar cadastrar person (pessoa) com campo inválido', function ($field, $value, $message) {
+test('lança exceção ao tentar cadastrar pessoa com campo inválido', function ($field, $value, $message) {
     expect(
         fn () => Person::factory()->create([$field => $value])
     )->toThrow(QueryException::class, $message);

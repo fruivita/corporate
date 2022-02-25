@@ -13,7 +13,7 @@ test('make retorna o objeto da classe', function () {
     expect(DutyImporter::make())->toBeInstanceOf(DutyImporter::class);
 });
 
-test('consegue importar as duties (funções) do arquivo corporativo', function () {
+test('consegue importar as funções do arquivo corporativo', function () {
     // forçar a execução de duas queries em pontos distintos e testá-las
     config(['corporate.maxupsert' => 2]);
 
@@ -25,7 +25,7 @@ test('consegue importar as duties (funções) do arquivo corporativo', function 
     ->and($duties->pluck('name'))->toMatchArray(['Função 1', 'Função 2', 'Função 3']);
 });
 
-test('cria os logs para as duties (funções) inválidas', function () {
+test('cria os logs para as funções inválidas', function () {
     Log::shouldReceive('log')
         ->times(6)
         ->withArgs(

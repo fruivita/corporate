@@ -3,7 +3,7 @@
 use FruiVita\Corporate\Models\Department;
 use Illuminate\Support\Str;
 
-test('cadastra múltiplas departments (lotações)', function () {
+test('cadastra múltiplas lotações', function () {
     $amount = 30;
 
     Department::factory()
@@ -13,7 +13,7 @@ test('cadastra múltiplas departments (lotações)', function () {
     expect(Department::count())->toBe($amount);
 });
 
-test('campo do department (lotação) em seu tamanho máximo é aceito', function ($field, $length) {
+test('campo do lotação em seu tamanho máximo é aceito', function ($field, $length) {
     Department::factory()->create([$field => Str::random($length)]);
 
     expect(Department::count())->toBe(1);

@@ -3,7 +3,7 @@
 use FruiVita\Corporate\Models\Occupation;
 use Illuminate\Support\Str;
 
-test('cadastra múltiplos occupations (cargos)', function () {
+test('cadastra múltiplos cargos', function () {
     $amount = 30;
 
     Occupation::factory()
@@ -13,7 +13,7 @@ test('cadastra múltiplos occupations (cargos)', function () {
     expect(Occupation::count())->toBe($amount);
 });
 
-test('occupation (cargo) name em seu tamanho máximo é aceito', function () {
+test('nome do cargo em seu tamanho máximo é aceito', function () {
     Occupation::factory()->create(['name' => Str::random(255)]);
 
     expect(Occupation::count())->toBe(1);

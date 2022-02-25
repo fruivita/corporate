@@ -10,7 +10,7 @@ use FruiVita\Corporate\Models\Occupation;
 use FruiVita\Corporate\Models\Person;
 use Illuminate\Database\QueryException;
 
-test('occupation (cargo), duty (função) e department (lotação) são opcionais', function ($field) {
+test('cargo, função e lotação são opcionais', function ($field) {
     Person::factory()->create([$field => null]);
 
     expect(Person::count())->toBe(1);
@@ -20,7 +20,7 @@ test('occupation (cargo), duty (função) e department (lotação) são opcionai
     'department_id',
 ]);
 
-test('um person (pessoa) possui uma occupation (cargo), uma duty (função) e/ou um department (lotação)', function () {
+test('uma pessoa possui um cargo, uma função e/ou uma lotação', function () {
     $occupation = Occupation::factory()->create();
     $duty = Duty::factory()->create();
     $department = Department::factory()->create();

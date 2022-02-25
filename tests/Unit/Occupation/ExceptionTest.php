@@ -8,7 +8,7 @@ use FruiVita\Corporate\Models\Occupation;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
 
-test('lança exceção ao tentar cadastrar occupations (cargos) em duplicidade, isto é, com ids iguais', function () {
+test('lança exceção ao tentar cadastrar cargos em duplicidade, isto é, com ids iguais', function () {
     expect(
         fn () => Occupation::factory()
             ->count(2)
@@ -16,7 +16,7 @@ test('lança exceção ao tentar cadastrar occupations (cargos) em duplicidade, 
     )->toThrow(QueryException::class, 'Duplicate entry');
 });
 
-test('lança exceção ao tentar cadastrar occupation (cargo) com campo inválido', function ($field, $value, $message) {
+test('lança exceção ao tentar cadastrar cargo com campo inválido', function ($field, $value, $message) {
     expect(
         fn () => Occupation::factory()->create([$field => $value])
     )->toThrow(QueryException::class, $message);

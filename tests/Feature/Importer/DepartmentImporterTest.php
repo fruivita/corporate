@@ -13,7 +13,7 @@ test('make retorna o objeto da classe', function () {
     expect(DepartmentImporter::make())->toBeInstanceOf(DepartmentImporter::class);
 });
 
-test('consegue importar os departments (lotações) do arquivo corporativo e cria os autorelacionamentos', function () {
+test('consegue importar as lotações do arquivo corporativo e cria os autorelacionamentos', function () {
     // forçar a execução de duas queries em pontos distintos e testá-las
     config(['corporate.maxupsert' => 2]);
 
@@ -39,7 +39,7 @@ test('consegue importar os departments (lotações) do arquivo corporativo e cri
     )->toBe('Lotação 1');
 });
 
-test('cria os logs para os departments (lotações) inválidos', function () {
+test('cria os logs para as lotações inválidos', function () {
     Log::shouldReceive('log')
         ->times(18)
         ->withArgs(

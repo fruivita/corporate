@@ -16,7 +16,7 @@ test('make retorna o objeto da classe', function () {
     expect(PersonImporter::make())->toBeInstanceOf(PersonImporter::class);
 });
 
-test('consegue importar os persons (pessoas) do arquivo corporativo', function () {
+test('consegue importar as pessoas do arquivo corporativo', function () {
     // forçar a execução de duas queries em pontos distintos e testá-las
     config(['corporate.maxupsert' => 2]);
 
@@ -31,7 +31,7 @@ test('consegue importar os persons (pessoas) do arquivo corporativo', function (
     ->and($persons->pluck('name'))->toMatchArray(['Pessoa 1', 'Pessoa 2', 'Pessoa 3', 'Pessoa 4', 'Pessoa 5']);
 });
 
-test('cria os logs para os persons (pessoas) inválidos', function () {
+test('cria os logs para as pessoas inválidos', function () {
     OccupationImporter::make()->import($this->file_path);
     DutyImporter::make()->import($this->file_path);
     DepartmentImporter::make()->import($this->file_path);

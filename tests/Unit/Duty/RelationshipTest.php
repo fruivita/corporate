@@ -7,7 +7,7 @@
 use FruiVita\Corporate\Models\Duty;
 use FruiVita\Corporate\Models\Person;
 
-test('uma duty (função) possui vários persons (pessoas)', function () {
+test('uma função possui várias pessoas', function () {
     $amount = 3;
 
     Duty::factory()

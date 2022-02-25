@@ -3,7 +3,7 @@
 use FruiVita\Corporate\Models\Duty;
 use Illuminate\Support\Str;
 
-test('cadastra múltiplas duties (funções)', function () {
+test('cadastra múltiplas funções', function () {
     $amount = 30;
 
     Duty::factory()
@@ -13,7 +13,7 @@ test('cadastra múltiplas duties (funções)', function () {
     expect(Duty::count())->toBe($amount);
 });
 
-test('duty (função) name em seu tamanho máximo é aceito', function () {
+test('nome da função em seu tamanho máximo é aceito', function () {
     Duty::factory()->create(['name' => Str::random(255)]);
 
     expect(Duty::count())->toBe(1);

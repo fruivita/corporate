@@ -8,7 +8,7 @@ use FruiVita\Corporate\Models\Department;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
 
-test('lança exceção ao tentar cadastrar departments (lotações) em duplicidade, isto é, com ids iguais', function () {
+test('lança exceção ao tentar cadastrar lotações em duplicidade, isto é, com ids iguais', function () {
     expect(
         fn () => Department::factory()
                     ->count(2)
@@ -16,7 +16,7 @@ test('lança exceção ao tentar cadastrar departments (lotações) em duplicida
     )->toThrow(QueryException::class, 'Duplicate entry');
 });
 
-test('lança exceção ao tentar cadastrar department (lotação) com campo inválido', function ($field, $value, $message) {
+test('lança exceção ao tentar cadastrar lotação com campo inválido', function ($field, $value, $message) {
     expect(
         fn () => Department::factory()->create([$field => $value])
     )->toThrow(QueryException::class, $message);
