@@ -19,7 +19,7 @@ class Person extends Model
     protected $fillable = ['username', 'name', 'department_id', 'occupation_id', 'duty_id'];
 
     /**
-     * Lotação de uma determinado pessoa.
+     * Lotação de uma determinada pessoa.
      */
     public function department()
     {
@@ -27,7 +27,7 @@ class Person extends Model
     }
 
     /**
-     * Cargo de uma determinado pessoa.
+     * Cargo de uma determinada pessoa.
      */
     public function occupation()
     {
@@ -35,7 +35,7 @@ class Person extends Model
     }
 
     /**
-     * Função de uma determinado pessoa.
+     * Função de uma determinada pessoa.
      */
     public function duty()
     {

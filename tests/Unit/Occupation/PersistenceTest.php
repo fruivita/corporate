@@ -20,7 +20,7 @@ test('nome do cargo em seu tamanho máximo é aceito', function () {
     expect(Occupation::count())->toBe(1);
 });
 
-test('uma cargo possui vários pessoas', function () {
+test('um cargo possui vários pessoas', function () {
     $amount = 3;
 
     Occupation::factory()

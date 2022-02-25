@@ -14,7 +14,7 @@ test('cadastra múltiplas lotações', function () {
     expect(Department::count())->toBe($amount);
 });
 
-test('campo do lotação em seu tamanho máximo é aceito', function ($field, $length) {
+test('campo da lotação em seu tamanho máximo é aceito', function ($field, $length) {
     Department::factory()->create([$field => Str::random($length)]);
 
     expect(Department::count())->toBe(1);
@@ -52,7 +52,7 @@ test('lotação pai tem várias filhas e a filha tem apenas um pai', function ()
     ->and($child->childDepartments)->toHaveCount(0);
 });
 
-test('um lotação possui várias pessoas', function () {
+test('uma lotação possui várias pessoas', function () {
     $amount = 3;
 
     Department::factory()
