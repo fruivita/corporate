@@ -69,6 +69,6 @@
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse --ansi --memory-limit 1G --error-format=github --debug",
         "coverage": "composer test -- --coverage",
-        "test": "vendor/bin/pest --colors=always"
+        "test": "vendor/bin/pest --colors=always --stop-on-failure"
     }
 }
