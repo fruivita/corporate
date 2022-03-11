@@ -14,7 +14,7 @@
 
 Importa a **Estrutura Corporativa** em formato **XML** para aplicações **[Laravel](https://laravel.com/docs)**.
 
-Este package foi planejado de acordo com as necessidades da Justiça Federal da 2ª Região. Contudo, ele pode ser utilizado em outros órgãos e projetos observados os termos previstos no [licenciamento](#license).
+Este package foi planejado de acordo com as necessidades da Justiça Federal do Espírito Santo. Contudo, ele pode ser utilizado em outros órgãos e projetos observados os termos previstos no [licenciamento](#license).
 
 ```php
 use FruiVita\Corporate\Facades\Corporate;
