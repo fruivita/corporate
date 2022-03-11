@@ -3,10 +3,10 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/fruivita/corporate?logo=packagist)](https://packagist.org/packages/fruivita/corporate)
 [![GitHub Release Date](https://img.shields.io/github/release-date/fruivita/corporate?logo=github)](/../../releases)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/fruivita/corporate/main?logo=github)](/../../commits/main)
-[![codecov](https://codecov.io/gh/fruivita/corporate/branch/main/graph/badge.svg?token=FKW113Y9RS)](https://codecov.io/gh/fruivita/corporate)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/fruivita/corporate/Unit%20and%20Feature%20tests/main?label=tests&logo=github)](/../../actions/workflows/tests.yml?query=branch%3Amain)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/98e8f7e0704865225131/test_coverage)](https://codeclimate.com/github/fruivita/corporate/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/98e8f7e0704865225131/maintainability)](https://codeclimate.com/github/fruivita/corporate/maintainability)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/fruivita/corporate/Static%20Analysis/main?label=code%20style&logo=github)](/../../actions/workflows/static.yml?query=branch%3Amain)
-[![Maintainability](https://api.codeclimate.com/v1/badges/3503c9ec3216587341cd/maintainability)](https://codeclimate.com/github/fruivita/corporate/maintainability)
 [![GitHub issues](https://img.shields.io/github/issues/fruivita/corporate?logo=github)](/../../issues)
 ![GitHub repo size](https://img.shields.io/github/repo-size/fruivita/corporate?logo=github)
 [![Packagist Total Downloads](https://img.shields.io/packagist/dt/fruivita/corporate?logo=packagist)](https://packagist.org/packages/fruivita/corporate)
@@ -132,7 +132,7 @@ Corporate::import($file_path);
 
 ## How it works
 
-Gerar o arquivo com a **Estrutura Corporativa** em formato **XML**:
+O arquivo com a **Estrutura Corporativa** deve ser oferecido a este package em formato **XML** estruturado da seguinte forma:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -146,7 +146,7 @@ Gerar o arquivo com a **Estrutura Corporativa** em formato **XML**:
         <cargo id="2" nome="Cargo 2"/>
     </cargos>
     <funcoes>
-        <!-- Funções:
+        <!-- Funções comissionadas:
             id: integer, obrigatório e maior que 1
             nome: string, obrigatório e tamanho entre 1 e 255
             -->
@@ -165,12 +165,12 @@ Gerar o arquivo com a **Estrutura Corporativa** em formato **XML**:
         <lotacao id="3" nome="Lotação 3" sigla="Sigla 3" idPai="1"/>
     </lotacoes>
     <pessoas>
-        <!-- Lotações:
+        <!-- Pessoas:
             nome: string, obrigatório e tamanho entre 1 e 255
-            sigla: string, obrigatório (preferencialmente o usuário do LDAP Server) e tamanho entre 1 e 20
-            cargo: integer, obrigatório, id de um cargo existente
-            lotacao: integer, obrigatório, id de uma lotação existente
-            funcaoConfianca: integer, opcional, id de uma função de confiança existente
+            sigla: string, obrigatório, usuário do LDAP Server e tamanho máximo de 20
+            cargo: integer, obrigatório, id de um dos cargos informados
+            lotacao: integer, obrigatório, id de uma das lotações informadas
+            funcaoConfianca: integer, opcional, id de uma das funções confiança informadas
             -->
         <pessoa id="1" nome="Pessoa 1" sigla="Sigla 1" cargo="1" lotacao="2" funcaoConfianca=""/>
         <pessoa id="2" nome="Pessoa 2" sigla="Sigla 2" cargo="1" lotacao="2" funcaoConfianca="2"/>
@@ -265,7 +265,7 @@ A versão mais recente receberá suporte e atualizações sempre que houver nece
 
 | Version | PHP     | Release | End of Life |
 |---------|---------|---------|-------------|
-| 1       | ^8.0    | -       | -           |
+| 1.x     | ^8.0    | -       | -           |
 
 🐛 Encontrou um bug?!?! Abra um **[issue](/../../issues/new?assignees=fcno&labels=bug%2Ctriage&template=bug_report.yml&title=%5BA+concise+title+for+the+bug%5D)**.
 
@@ -309,7 +309,7 @@ A lista a seguir contém as necessidades de melhorias identificadas e aprovadas 
 
 - ❤️ [Orchestra Platform](https://github.com/orchestral) pelo package [orchestral/testbench](https://github.com/orchestral/testbench)
 
-- ❤️ [FriendsOfPHP](https://github.com/FriendsOfPHP) pelos package [FriendsOfPHP/PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
+- ❤️ [FriendsOfPHP](https://github.com/FriendsOfPHP) pelo package [FriendsOfPHP/PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
 
 - ❤️ [Nuno Maduro](https://github.com/nunomaduro) pelo package [nunomaduro/larastan](https://github.com/nunomaduro/larastan)
 
@@ -326,6 +326,18 @@ A lista a seguir contém as necessidades de melhorias identificadas e aprovadas 
   - [phpstan/phpstan](https://github.com/phpstan/phpstan)
 
   - [phpstan/phpstan-deprecation-rules](https://github.com/phpstan/phpstan-deprecation-rules)
+
+- ❤️ [ergebnis](https://github.com/ergebnis) pelo package [ergebnis/composer-normalize](https://github.com/ergebnis/composer-normalize)
+
+- ❤️ [Shivam Mathur](https://github.com/shivammathur) pela Github Action [shivammathur/setup-php](https://github.com/shivammathur/setup-php)
+
+- ❤️ [GP](https://github.com/paambaati) pela Github Action [paambaati/codeclimate-action](https://github.com/paambaati/codeclimate-action)
+
+- ❤️ [Stefan Zweifel](https://github.com/stefanzweifel) pelas Github Actions:
+
+  - [stefanzweifel/git-auto-commit-action](https://github.com/stefanzweifel/git-auto-commit-action)
+
+  - [stefanzweifel/changelog-updater-action](https://github.com/stefanzweifel/changelog-updater-action)
 
 💸 Algumas dessas pessoas ou organizações possuem alguns produtos/serviços que podem ser comprados. Se você puder ajudá-los comprando algum deles ou se tornando um patrocinador, mesmo que por curto período, ajudará toda a comunidade **open-source** a continuar desenvolvendo soluções para todos.
 
