@@ -30,6 +30,7 @@ jobs:
         with:
           latest-version: ${{ github.event.release.tag_name }}
           release-notes: ${{ github.event.release.body }}
+          path-to-changelog: docs/CHANGELOG.md
           compare-url-target-revision: ${{ github.event.release.target_commitish }}
 
       - name: Auto Commit
