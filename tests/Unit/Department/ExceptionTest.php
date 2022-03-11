@@ -21,12 +21,12 @@ test('lança exceção ao tentar cadastrar lotação com campo inválido', funct
         fn () => Department::factory()->create([$field => $value])
     )->toThrow(QueryException::class, $message);
 })->with([
-    ['id',    'texto',           'Incorrect integer value'],  //valor não conversível em inteiro
-    ['id',    null,              'cannot be null'],           //campo obrigatório
-    ['name',  Str::random(256),  'Data too long for column'], //campo aceita no máximo 255 caracteres
-    ['name',  null,              'cannot be null'],           //campo obrigatório
-    ['acronym', Str::random(51), 'Data too long for column'], //campo aceita no máximo 50 caracteres
-    ['acronym', null,            'cannot be null'],           //campo obrigatório
+    ['id',    'texto',           'Incorrect integer value'],  // valor não conversível em inteiro
+    ['id',    null,              'cannot be null'],           // campo obrigatório
+    ['name',  Str::random(256),  'Data too long for column'], // campo aceita no máximo 255 caracteres
+    ['name',  null,              'cannot be null'],           // campo obrigatório
+    ['acronym', Str::random(51), 'Data too long for column'], // campo aceita no máximo 50 caracteres
+    ['acronym', null,            'cannot be null'],           // campo obrigatório
 ]);
 
 test('lança exceção ao tentar definir relacionamento inválido, isto é, com lotação pai inexistente', function () {
