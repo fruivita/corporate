@@ -7,6 +7,7 @@
 # Atualiza, automaticamente, o arquivo changelog sempre que houver um release
 # valendo-se das configurações definidas no branch main.
 #
+# https://docs.github.com/actions/learn-github-actions/reusing-workflows
 
 name: Update Changelog
 
@@ -16,4 +17,4 @@ on:
 
 jobs:
   update:
-    uses: fruivita/.github/.github/workflows/update-changelog.yml@main
+    uses: fruivita/corporate/.github/workflows/update-changelog.yml@main
