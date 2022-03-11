@@ -5,9 +5,8 @@
 ###############################################################################
 #
 # Atualiza, automaticamente, o arquivo changelog sempre que houver um release
+# valendo-se das configurações definidas no branch main.
 #
-# Motivação: https://stefanzweifel.io/posts/2021/11/13/introducing-the-changelog-updater-action
-# Como usar: https://github.com/stefanzweifel/changelog-updater-action
 
 name: Update Changelog
 
@@ -17,25 +16,4 @@ on:
 
 jobs:
   update:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref_name }}
-
-      - name: Update Changelog
-        uses: stefanzweifel/changelog-updater-action@v1
-        with:
-          latest-version: ${{ github.event.release.tag_name }}
-          release-notes: ${{ github.event.release.body }}
-          path-to-changelog: docs/CHANGELOG.md
-          compare-url-target-revision: ${{ github.event.release.target_commitish }}
-
-      - name: Auto Commit
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: ${{ github.event.release.target_commitish }}
-          commit_message: 'docs: update changelog'
-          file_pattern: docs/CHANGELOG.md
+    uses: fruivita/.github/.github/workflows/update-changelog.yml@main
