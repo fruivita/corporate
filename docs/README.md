@@ -116,9 +116,9 @@ Corporate::import($file_path);
     {
         "End of corporate structure import": "Fim da importação da estrutura corporativa",
         "Start of corporate structure import": "Início da importação da estrutura corporativa",
-        "The file entered could not be read!": "O arquivo informado não pôde ser lido!",
-        "The file must be in [:attribute] format!": "O arquivo precisa ser no formato [:attribute]!",
-        "Validation failed!": "Validação falhou!"
+        "The file entered could not be read": "O arquivo informado não pôde ser lido",
+        "The file must be in [:attribute] format": "O arquivo precisa ser no formato [:attribute]",
+        "Validation failed": "Validação falhou"
     }
     ```
 

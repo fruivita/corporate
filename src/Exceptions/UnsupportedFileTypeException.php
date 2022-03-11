@@ -13,6 +13,6 @@ class UnsupportedFileTypeException extends Exception
 {
     public function __construct()
     {
-        parent::__construct(__('The file must be in [:attribute] format!', ['attribute' => 'XML']));
+        parent::__construct(__('The file must be in [:attribute] format', ['attribute' => 'XML']));
     }
 }

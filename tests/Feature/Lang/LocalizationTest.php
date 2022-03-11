@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\App;
 test('exception com mensagem default em inglês', function () {
     $exception = new FileNotReadableException();
 
-    expect($exception->getMessage())->toBe('The file entered could not be read!');
+    expect($exception->getMessage())->toBe('The file entered could not be read');
 });
 
 test('exception com mensagem default em português alterando o locale', function () {
@@ -18,5 +18,5 @@ test('exception com mensagem default em português alterando o locale', function
 
     $exception = new FileNotReadableException();
 
-    expect($exception->getMessage())->toBe('O arquivo informado não pôde ser lido!');
+    expect($exception->getMessage())->toBe('O arquivo informado não pôde ser lido');
 });
