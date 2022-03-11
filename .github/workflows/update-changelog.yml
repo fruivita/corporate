@@ -8,10 +8,12 @@
 #
 # Motivação: https://stefanzweifel.io/posts/2021/11/13/introducing-the-changelog-updater-action
 # Como usar: https://github.com/stefanzweifel/changelog-updater-action
+# See: https://docs.github.com/pt/actions/using-workflows/reusing-workflows#creating-a-reusable-workflow
 
 name: Update Changelog
 
 on:
+  workflow_call:
   release:
     types: [released]
 
