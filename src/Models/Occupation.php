@@ -22,6 +22,10 @@ class Occupation extends Model
 
     /**
      * Usuários ocupantes de um determinado cargo.
+     *
+     * Relacionamento occupation (1:N) user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function users()
     {

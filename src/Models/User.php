@@ -22,6 +22,10 @@ class User extends Authenticatable
 
     /**
      * Lotação de um determinado usuário.
+     *
+     * Relacionamento user (N:1) department.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function department()
     {
@@ -30,6 +34,10 @@ class User extends Authenticatable
 
     /**
      * Cargo de um determinado usuário.
+     *
+     * Relacionamento user (N:1) occupation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function occupation()
     {
@@ -38,6 +46,10 @@ class User extends Authenticatable
 
     /**
      * Função de um determinado usuário.
+     *
+     * Relacionamento user (N:1) duty.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function duty()
     {

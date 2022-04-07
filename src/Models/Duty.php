@@ -22,6 +22,10 @@ class Duty extends Model
 
     /**
      * Usuários ocupantes de uma determinada função.
+     *
+     * Relacionamento duty (1:N) user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function users()
     {

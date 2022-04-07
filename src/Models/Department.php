@@ -22,6 +22,10 @@ class Department extends Model
 
     /**
      * Lotação pai de uma determinada lotação.
+     *
+     * Relacionamento department filha (N:1) department pai.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parentDepartment()
     {
@@ -30,6 +34,10 @@ class Department extends Model
 
     /**
      * Lotações filhas de uma determinada lotação.
+     *
+     * Relacionamento department pai (1:N) department filhas.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function childDepartments()
     {
@@ -38,6 +46,10 @@ class Department extends Model
 
     /**
      * Usuários lotadas em uma determinada lotação.
+     *
+     * Relacionamento department (1:N) user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function users()
     {
