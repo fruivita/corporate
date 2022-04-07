@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Cargo de uma determinada pessoa.
+ * Cargo de um determinada usuário.
  *
  * @see https://laravel.com/docs/9.x/eloquent
  */
@@ -21,10 +21,10 @@ class Occupation extends Model
     public $incrementing = false;
 
     /**
-     * Pessoas ocupantes de um determinado cargo.
+     * Usuários ocupantes de um determinado cargo.
      */
-    public function persons()
+    public function users()
     {
-        return $this->hasMany(Person::class, 'occupation_id', 'id');
+        return $this->hasMany(User::class, 'occupation_id', 'id');
     }
 }

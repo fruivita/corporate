@@ -2,10 +2,10 @@
 
 namespace FruiVita\Corporate\Importer;
 
-use FruiVita\Corporate\Models\Person;
+use FruiVita\Corporate\Models\User;
 use Illuminate\Support\Collection;
 
-final class PersonImporter extends BaseImporter
+final class UserImporter extends BaseImporter
 {
     /**
      * {@inheritdoc}
@@ -60,7 +60,7 @@ final class PersonImporter extends BaseImporter
      */
     protected function save(Collection $validated): void
     {
-        Person::upsert(
+        User::upsert(
             $validated->toArray(),
             $this->unique,
             $this->fields_to_update

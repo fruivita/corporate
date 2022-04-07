@@ -1,7 +1,7 @@
 <?php
 
 use FruiVita\Corporate\Models\Duty;
-use FruiVita\Corporate\Models\Person;
+use FruiVita\Corporate\Models\User;
 use Illuminate\Support\Str;
 
 test('cadastra múltiplas funções', function () {
@@ -20,15 +20,15 @@ test('nome da função em seu tamanho máximo é aceito', function () {
     expect(Duty::count())->toBe(1);
 });
 
-test('uma função possui várias pessoas', function () {
+test('uma função possui várias pessoas/usuários', function () {
     $amount = 3;
 
     Duty::factory()
-        ->has(Person::factory()->count($amount), 'persons')
+        ->has(User::factory()->count($amount), 'users')
         ->create();
 
-    $duty = Duty::with('persons')->first();
+    $duty = Duty::with('users')->first();
 
-    expect($duty->persons->random())->toBeInstanceOf(Person::class)
-    ->and($duty->persons)->toHaveCount($amount);
+    expect($duty->users->random())->toBeInstanceOf(User::class)
+    ->and($duty->users)->toHaveCount($amount);
 });

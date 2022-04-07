@@ -2,16 +2,16 @@
 
 namespace FruiVita\Corporate\Database\Factories;
 
-use FruiVita\Corporate\Models\Person;
+use FruiVita\Corporate\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @see https://laravel.com/docs/9.x/database-testing
  * @see https://fakerphp.github.io/
  */
-class PersonFactory extends Factory
+class UserFactory extends Factory
 {
-    protected $model = Person::class;
+    protected $model = User::class;
 
     /**
      * {@inheritdoc}

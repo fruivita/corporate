@@ -3,23 +3,25 @@
 namespace FruiVita\Corporate\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Pessoa.
+ * Usuário (pessoa).
+ *
+ * Notar que o tratamento dado à pessoa, presume-a como usuária da aplicação.
  *
  * @see https://laravel.com/docs/9.x/eloquent
  */
-class Person extends Model
+class User extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = 'persons';
+    protected $table = 'users';
 
     protected $fillable = ['username', 'name', 'department_id', 'occupation_id', 'duty_id'];
 
     /**
-     * Lotação de uma determinada pessoa.
+     * Lotação de um determinado usuário.
      */
     public function department()
     {
@@ -27,7 +29,7 @@ class Person extends Model
     }
 
     /**
-     * Cargo de uma determinada pessoa.
+     * Cargo de um determinado usuário.
      */
     public function occupation()
     {
@@ -35,7 +37,7 @@ class Person extends Model
     }
 
     /**
-     * Função de uma determinada pessoa.
+     * Função de um determinado usuário.
      */
     public function duty()
     {

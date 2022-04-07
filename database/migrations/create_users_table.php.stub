@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /*
- * Pessoas
+ * Usuários (pessoas)
  *
  * @see https://laravel.com/docs/9.x/migrations
  * @see https://dev.mysql.com/doc/refman/8.0/en/integer-types.html
@@ -19,7 +19,7 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('persons', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('department_id')->nullable();
             $table->unsignedBigInteger('occupation_id')->nullable();
@@ -53,6 +53,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('persons');
+        Schema::dropIfExists('users');
     }
 };

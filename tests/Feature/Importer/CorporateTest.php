@@ -11,7 +11,7 @@ use FruiVita\Corporate\Facades\Corporate;
 use FruiVita\Corporate\Models\Department;
 use FruiVita\Corporate\Models\Duty;
 use FruiVita\Corporate\Models\Occupation;
-use FruiVita\Corporate\Models\Person;
+use FruiVita\Corporate\Models\User;
 use Illuminate\Support\Facades\Log;
 
 test('lança exceção ao executar a importação com arquivo inválido', function ($file_name) {
@@ -68,7 +68,7 @@ test('usa o maxupsert default se inválido e cria apenas os logs de validação 
     expect(Occupation::count())->toBe(3)
     ->and(Duty::count())->toBe(3)
     ->and(Department::count())->toBe(5)
-    ->and(Person::count())->toBe(5);
+    ->and(User::count())->toBe(5);
 });
 
 test('importa a estrutura corporativa completa e cria todos os logs', function () {
@@ -103,5 +103,5 @@ test('importa a estrutura corporativa completa e cria todos os logs', function (
     expect(Occupation::count())->toBe(3)
     ->and(Duty::count())->toBe(3)
     ->and(Department::count())->toBe(5)
-    ->and(Person::count())->toBe(5);
+    ->and(User::count())->toBe(5);
 });

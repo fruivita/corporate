@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Lotação de uma determinada pessoa.
+ * Lotação de um determinada usuário.
  *
  * @see https://laravel.com/docs/9.x/eloquent
  */
@@ -37,10 +37,10 @@ class Department extends Model
     }
 
     /**
-     * Pessoas lotadas em uma determinada lotação.
+     * Usuários lotadas em uma determinada lotação.
      */
-    public function persons()
+    public function users()
     {
-        return $this->hasMany(Person::class, 'department_id', 'id');
+        return $this->hasMany(User::class, 'department_id', 'id');
     }
 }

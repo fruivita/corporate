@@ -1,7 +1,7 @@
 <?php
 
 use FruiVita\Corporate\Models\Department;
-use FruiVita\Corporate\Models\Person;
+use FruiVita\Corporate\Models\User;
 use Illuminate\Support\Str;
 
 test('cadastra múltiplas lotações', function () {
@@ -52,15 +52,15 @@ test('lotação pai tem várias filhas e a filha tem apenas um pai', function ()
     ->and($child->childDepartments)->toHaveCount(0);
 });
 
-test('uma lotação possui várias pessoas', function () {
+test('uma lotação possui várias pessoas/usuários', function () {
     $amount = 3;
 
     Department::factory()
-        ->has(Person::factory()->count($amount), 'persons')
+        ->has(User::factory()->count($amount), 'users')
         ->create();
 
-    $department = Department::with(['persons'])->first();
+    $department = Department::with(['users'])->first();
 
-    expect($department->persons->random())->toBeInstanceOf(Person::class)
-    ->and($department->persons)->toHaveCount($amount);
+    expect($department->users->random())->toBeInstanceOf(User::class)
+    ->and($department->users)->toHaveCount($amount);
 });

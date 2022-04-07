@@ -8,7 +8,7 @@ use FruiVita\Corporate\Exceptions\UnsupportedFileTypeException;
 use FruiVita\Corporate\Importer\DepartmentImporter;
 use FruiVita\Corporate\Importer\DutyImporter;
 use FruiVita\Corporate\Importer\OccupationImporter;
-use FruiVita\Corporate\Importer\PersonImporter;
+use FruiVita\Corporate\Importer\UserImporter;
 use FruiVita\Corporate\Trait\Logable;
 use Illuminate\Support\Facades\Log;
 
@@ -121,7 +121,7 @@ class Corporate implements IImportable
         OccupationImporter::make()->import($this->file_path);
         DutyImporter::make()->import($this->file_path);
         DepartmentImporter::make()->import($this->file_path);
-        PersonImporter::make()->import($this->file_path);
+        UserImporter::make()->import($this->file_path);
 
         return $this;
     }

@@ -18,7 +18,7 @@ parameters:
     - FruiVita\Corporate\Models\Occupation
     - FruiVita\Corporate\Models\Duty
     - FruiVita\Corporate\Models\Department
-    - FruiVita\Corporate\Models\Person
+    - FruiVita\Corporate\Models\User
 
   # https://phpstan.org/user-guide/ignoring-errors
   ignoreErrors:

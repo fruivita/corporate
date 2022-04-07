@@ -1,7 +1,7 @@
 <?php
 
 use FruiVita\Corporate\Models\Occupation;
-use FruiVita\Corporate\Models\Person;
+use FruiVita\Corporate\Models\User;
 use Illuminate\Support\Str;
 
 test('cadastra múltiplos cargos', function () {
@@ -20,15 +20,15 @@ test('nome do cargo em seu tamanho máximo é aceito', function () {
     expect(Occupation::count())->toBe(1);
 });
 
-test('um cargo possui vários pessoas', function () {
+test('um cargo possui vários pessoas/usuários', function () {
     $amount = 3;
 
     Occupation::factory()
-        ->has(Person::factory()->count($amount), 'persons')
+        ->has(User::factory()->count($amount), 'users')
         ->create();
 
-    $occupation = Occupation::with('persons')->first();
+    $occupation = Occupation::with('users')->first();
 
-    expect($occupation->persons->random())->toBeInstanceOf(Person::class)
-    ->and($occupation->persons)->toHaveCount($amount);
+    expect($occupation->users->random())->toBeInstanceOf(User::class)
+    ->and($occupation->users)->toHaveCount($amount);
 });

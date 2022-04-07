@@ -37,7 +37,7 @@ class CorporateServiceProvider extends ServiceProvider
                 __DIR__ . '/../database/migrations/create_occupations_table.php.stub' => database_path('migrations/2020_01_01_000000_create_occupations_table.php'),
                 __DIR__ . '/../database/migrations/create_duties_table.php.stub' => database_path('migrations/2020_01_01_000000_create_duties_table.php'),
                 __DIR__ . '/../database/migrations/create_departments_table.php.stub' => database_path('migrations/2020_01_01_000000_create_departments_table.php'),
-                __DIR__ . '/../database/migrations/create_persons_table.php.stub' => database_path('migrations/2020_01_01_000000_create_persons_table.php'),
+                __DIR__ . '/../database/migrations/create_users_table.php.stub' => database_path('migrations/2020_01_01_000000_create_users_table.php'),
             ], 'migrations');
         }
     }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Função comissionada de uma determinada pessoa.
+ * Função comissionada de um determinada usuário.
  *
  * @see https://laravel.com/docs/9.x/eloquent
  */
@@ -21,10 +21,10 @@ class Duty extends Model
     public $incrementing = false;
 
     /**
-     * Pessoas ocupantes de uma determinada função.
+     * Usuários ocupantes de uma determinada função.
      */
-    public function persons()
+    public function users()
     {
-        return $this->hasMany(Person::class, 'duty_id', 'id');
+        return $this->hasMany(User::class, 'duty_id', 'id');
     }
 }

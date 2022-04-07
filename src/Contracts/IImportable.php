@@ -11,7 +11,7 @@ interface IImportable
      * 1. Occupation (Cargo)
      * 2. Duty (Função)
      * 3. Department (Lotação)
-     * 4. Person (Usuário)
+     * 4. User (Pessoa)
      *
      * @param string $file_path full path do arquivo XML com a estrutura
      *                          corporativa que será importado

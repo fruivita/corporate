@@ -5,6 +5,8 @@ namespace FruiVita\Corporate\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @method static void import(string $file_path)
+ *
  * @see \FruiVita\Corporate\Corporate
  * @see https://laravel.com/docs/9.x/facades
  */

@@ -8,30 +8,30 @@
 use FruiVita\Corporate\Importer\DepartmentImporter;
 use FruiVita\Corporate\Importer\DutyImporter;
 use FruiVita\Corporate\Importer\OccupationImporter;
-use FruiVita\Corporate\Importer\PersonImporter;
-use FruiVita\Corporate\Models\Person;
+use FruiVita\Corporate\Importer\UserImporter;
+use FruiVita\Corporate\Models\User;
 use Illuminate\Support\Facades\Log;
 
 test('make retorna o objeto da classe', function () {
-    expect(PersonImporter::make())->toBeInstanceOf(PersonImporter::class);
+    expect(UserImporter::make())->toBeInstanceOf(UserImporter::class);
 });
 
-test('consegue importar as pessoas do arquivo corporativo', function () {
+test('consegue importar as pessoas/usuários do arquivo corporativo', function () {
     // forçar a execução de duas queries em pontos distintos e testá-las
     config(['corporate.maxupsert' => 2]);
 
     OccupationImporter::make()->import($this->file_path);
     DutyImporter::make()->import($this->file_path);
     DepartmentImporter::make()->import($this->file_path);
-    PersonImporter::make()->import($this->file_path);
+    UserImporter::make()->import($this->file_path);
 
-    $persons = Person::get();
+    $users = User::get();
 
-    expect($persons)->toHaveCount(5)
-    ->and($persons->pluck('name'))->toMatchArray(['Pessoa 1', 'Pessoa 2', 'Pessoa 3', 'Pessoa 4', 'Pessoa 5']);
+    expect($users)->toHaveCount(5)
+    ->and($users->pluck('name'))->toMatchArray(['Pessoa 1', 'Pessoa 2', 'Pessoa 3', 'Pessoa 4', 'Pessoa 5']);
 });
 
-test('cria os logs para as pessoas inválidos', function () {
+test('cria os logs para as pessoas/usuários inválidos', function () {
     OccupationImporter::make()->import($this->file_path);
     DutyImporter::make()->import($this->file_path);
     DepartmentImporter::make()->import($this->file_path);
@@ -44,7 +44,7 @@ test('cria os logs para as pessoas inválidos', function () {
             }
         );
 
-    PersonImporter::make()->import($this->file_path);
+    UserImporter::make()->import($this->file_path);
 
-    expect(Person::count())->toBe(5);
+    expect(User::count())->toBe(5);
 });
