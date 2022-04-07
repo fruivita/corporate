@@ -263,9 +263,9 @@ Por favor, veja na [política de segurança](/../../security/policy) como report
 
 A versão mais recente receberá suporte e atualizações sempre que houver necessidade. As demais, receberão atualizações por 06 meses após terem sido substituídas por uma nova versão sendo, então, descontinuadas.
 
-| Version | PHP     | Release | End of Life |
-|---------|---------|---------|-------------|
-| 1.x     | ^8.0    | -       | -           |
+| Version | PHP     | Release    | End of Life |
+|---------|---------|------------|-------------|
+| 1.0     | ^8.0    | 07/04/2022 | dd-mm-yyyy  |
 
 🐛 Encontrou um bug?!?! Abra um **[issue](/../../issues/new?assignees=fcno&labels=bug%2Ctriage&template=bug_report.yml&title=%5BA+concise+title+for+the+bug%5D)**.
 
