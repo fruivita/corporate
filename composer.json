@@ -22,16 +22,16 @@
     "require": {
         "php": "^8.0",
         "ext-xmlreader": "*",
-        "illuminate/collections": "^9.2",
-        "illuminate/database": "^9.2",
-        "illuminate/support": "^9.2"
+        "illuminate/collections": "^9.7",
+        "illuminate/database": "^9.7",
+        "illuminate/support": "^9.7"
     },
     "require-dev": {
-        "nunomaduro/larastan": "^2.0",
-        "orchestra/testbench": "^7.1",
+        "nunomaduro/larastan": "^2.1",
+        "orchestra/testbench": "^7.3",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.2",
-        "phpstan/phpstan": "^1.4",
+        "phpstan/phpstan": "^1.5",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpunit/phpunit": "^9.5"
     },
