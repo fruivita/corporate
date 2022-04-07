@@ -56,7 +56,7 @@ abstract class BaseImporter implements IImportable
     /**
      * {@inheritdoc}
      */
-    public function import(string $file_path): void
+    public function import(string $file_path)
     {
         $this
             ->setFilePath($file_path)
@@ -71,7 +71,7 @@ abstract class BaseImporter implements IImportable
      *
      * @return static
      */
-    private function setFilePath(string $file_path): static
+    private function setFilePath(string $file_path)
     {
         $this->file_path = $file_path;
 
@@ -84,7 +84,7 @@ abstract class BaseImporter implements IImportable
      *
      * @return static
      */
-    private function setMaxUpsert(): static
+    private function setMaxUpsert()
     {
         $max = config('corporate.maxupsert');
 
@@ -110,7 +110,7 @@ abstract class BaseImporter implements IImportable
      *
      * @return array<string, string> array assoc
      */
-    abstract protected function extractFieldsFromNode(\XMLReader $node): array;
+    abstract protected function extractFieldsFromNode(\XMLReader $node);
 
     /**
      * Faz a persistência dos itens validados.
@@ -119,7 +119,7 @@ abstract class BaseImporter implements IImportable
      *
      * @return void
      */
-    abstract protected function save(Collection $validated): void;
+    abstract protected function save(Collection $validated);
 
     /**
      * Posiciona o XMLReader no primeiro nó XML que deverá ser trabalhado.
@@ -132,7 +132,7 @@ abstract class BaseImporter implements IImportable
      *
      * @see https://drib.tech/programming/parse-large-xml-files-php
      */
-    protected function startReadFrom(): \XMLReader
+    protected function startReadFrom()
     {
         $xml = new \XMLReader();
         $xml->open($this->file_path);
@@ -157,7 +157,7 @@ abstract class BaseImporter implements IImportable
      *
      * @see https://drib.tech/programming/parse-large-xml-files-php
      */
-    protected function run(): static
+    protected function run()
     {
         $validated = collect();
 
@@ -200,7 +200,7 @@ abstract class BaseImporter implements IImportable
      *
      * @return array<string, string>|null assoc array
      */
-    private function validateAndLogError(array $inputs): ?array
+    private function validateAndLogError(array $inputs)
     {
         $validator = Validator::make($inputs, $this->rules);
 
@@ -241,7 +241,7 @@ abstract class BaseImporter implements IImportable
      * @see https://www.php-fig.org/psr/psr-3/
      * @see https://www.php.net/manual/en/function.array-merge.php
      */
-    private function log(string $level, string|\Stringable $message, ?array $context): void
+    private function log(string $level, string|\Stringable $message, ?array $context)
     {
         Log::log(
             level: $level,

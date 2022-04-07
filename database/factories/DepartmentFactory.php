@@ -16,7 +16,7 @@ class DepartmentFactory extends Factory
     /**
      * {@inheritdoc}
      */
-    public function definition(): array
+    public function definition()
     {
         return [
             'parent_department' => null,

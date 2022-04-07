@@ -16,7 +16,7 @@ trait Logable
      *
      * @return bool
      */
-    public function shouldLog(): bool
+    public function shouldLog()
     {
         return config('corporate.logging', false);
     }

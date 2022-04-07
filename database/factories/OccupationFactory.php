@@ -16,7 +16,7 @@ class OccupationFactory extends Factory
     /**
      * {@inheritdoc}
      */
-    public function definition(): array
+    public function definition()
     {
         return [
             'id' => $this->faker->unique()->randomNumber(),

@@ -34,7 +34,7 @@ class Corporate implements IImportable
     /**
      * {@inheritdoc}
      */
-    public function import(string $file_path): void
+    public function import(string $file_path)
     {
         throw_if(! $this->isReadable($file_path), FileNotReadableException::class);
         throw_if(! $this->allowedMimeType($file_path), UnsupportedFileTypeException::class);
@@ -53,7 +53,7 @@ class Corporate implements IImportable
      *
      * @return bool
      */
-    private function isReadable(string $file_path): bool
+    private function isReadable(string $file_path)
     {
         $response = is_readable($file_path);
 
@@ -69,7 +69,7 @@ class Corporate implements IImportable
      *
      * @return bool
      */
-    private function allowedMimeType(string $file_path): bool
+    private function allowedMimeType(string $file_path)
     {
         return in_array(
             needle: mime_content_type($file_path),
@@ -84,7 +84,7 @@ class Corporate implements IImportable
      *
      * @return static
      */
-    private function setFilePath(string $file_path): static
+    private function setFilePath(string $file_path)
     {
         $this->file_path = $file_path;
 
@@ -96,7 +96,7 @@ class Corporate implements IImportable
      *
      * @return static
      */
-    private function start(): static
+    private function start()
     {
         if ($this->shouldLog()) {
             Log::log(
@@ -116,7 +116,7 @@ class Corporate implements IImportable
      *
      * @return static
      */
-    private function run(): static
+    private function run()
     {
         OccupationImporter::make()->import($this->file_path);
         DutyImporter::make()->import($this->file_path);
@@ -131,7 +131,7 @@ class Corporate implements IImportable
      *
      * @return static
      */
-    private function finish(): static
+    private function finish()
     {
         if ($this->shouldLog()) {
             Log::log(

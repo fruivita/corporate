@@ -36,7 +36,7 @@ final class UserImporter extends BaseImporter
     /**
      * Create new class instance.
      */
-    public static function make(): static
+    public static function make()
     {
         return new static();
     }
@@ -44,7 +44,7 @@ final class UserImporter extends BaseImporter
     /**
      * {@inheritdoc}
      */
-    protected function extractFieldsFromNode(\XMLReader $node): array
+    protected function extractFieldsFromNode(\XMLReader $node)
     {
         return [
             'username' => $node->getAttribute('sigla') ?: null,
@@ -58,7 +58,7 @@ final class UserImporter extends BaseImporter
     /**
      * {@inheritdoc}
      */
-    protected function save(Collection $validated): void
+    protected function save(Collection $validated)
     {
         User::upsert(
             $validated->toArray(),

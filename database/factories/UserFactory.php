@@ -16,7 +16,7 @@ class UserFactory extends Factory
     /**
      * {@inheritdoc}
      */
-    public function definition(): array
+    public function definition()
     {
         return [
             'department_id' => null,

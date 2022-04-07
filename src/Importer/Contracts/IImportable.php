@@ -12,5 +12,5 @@ interface IImportable
      *
      * @return void
      */
-    public function import(string $file_path): void;
+    public function import(string $file_path);
 }

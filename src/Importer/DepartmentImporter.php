@@ -34,7 +34,7 @@ final class DepartmentImporter extends BaseImporter
     /**
      * Create new class instance.
      */
-    public static function make(): static
+    public static function make()
     {
         return new static();
     }
@@ -42,7 +42,7 @@ final class DepartmentImporter extends BaseImporter
     /**
      * {@inheritdoc}
      */
-    protected function extractFieldsFromNode(\XMLReader $node): array
+    protected function extractFieldsFromNode(\XMLReader $node)
     {
         return [
             'id' => $node->getAttribute('id') ?: null,
@@ -54,7 +54,7 @@ final class DepartmentImporter extends BaseImporter
     /**
      * {@inheritdoc}
      */
-    protected function save(Collection $validated): void
+    protected function save(Collection $validated)
     {
         Department::upsert(
             $validated->toArray(),

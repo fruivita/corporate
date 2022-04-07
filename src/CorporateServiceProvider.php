@@ -11,7 +11,10 @@ use Illuminate\Support\ServiceProvider;
  */
 class CorporateServiceProvider extends ServiceProvider
 {
-    public function register(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'corporate');
 
@@ -20,7 +23,10 @@ class CorporateServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot(): void
+    /**
+     * @return void
+     */
+    public function boot()
     {
         $this->loadJsonTranslationsFrom(__DIR__ . '/../lang');
 
