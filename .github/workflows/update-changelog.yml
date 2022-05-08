@@ -1,13 +1,13 @@
 ###############################################################################
-# Sobre GitHub Actions                                                        #
+# About GitHub Actions                                                        #
 # https://docs.github.com/en/actions/learn-github-actions                     #
 # https://www.youtube.com/watch?v=TLB5MY9BBa4                                 #
 ###############################################################################
 #
-# Atualiza, automaticamente, o arquivo changelog sempre que houver um release
+# Automatically updates the changelog file whenever there is a release
 #
-# Motivação: https://stefanzweifel.io/posts/2021/11/13/introducing-the-changelog-updater-action
-# Como usar: https://github.com/stefanzweifel/changelog-updater-action
+# Motivation: https://stefanzweifel.io/posts/2021/11/13/introducing-the-changelog-updater-action
+# How to use: https://github.com/stefanzweifel/changelog-updater-action
 # See: https://docs.github.com/pt/actions/using-workflows/reusing-workflows#creating-a-reusable-workflow
 
 name: Update Changelog
@@ -39,5 +39,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.release.target_commitish }}
-          commit_message: 'docs: update changelog'
+          commit_message: 'docs: update changelog.md'
           file_pattern: docs/CHANGELOG.md

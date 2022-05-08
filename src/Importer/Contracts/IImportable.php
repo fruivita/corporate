@@ -5,10 +5,10 @@ namespace FruiVita\Corporate\Importer\Contracts;
 interface IImportable
 {
     /**
-     * Executa a importação.
+     * Run the import.
      *
-     * @param string $file_path full path do arquivo XML com a estrutura
-     *                          corporativa que será importado
+     * @param string $file_path full path of the XML file with the corporate
+     *                          structure that will be imported
      *
      * @return void
      */

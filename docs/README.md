@@ -10,7 +10,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/fruivita/corporate?logo=github)](/../../issues)
 ![GitHub repo size](https://img.shields.io/github/repo-size/fruivita/corporate?logo=github)
 [![Packagist Total Downloads](https://img.shields.io/packagist/dt/fruivita/corporate?logo=packagist)](https://packagist.org/packages/fruivita/corporate)
-[![GitHub](https://img.shields.io/github/license/fruivita/corporate?logo=github)](LICENSE.md)
+[![GitHub](https://img.shields.io/github/license/fruivita/corporate?logo=github)](../LICENSE.md)
 
 Importa a **Estrutura Corporativa** em formato **XML** para aplicações **[Laravel](https://laravel.com/docs)**.
 
@@ -180,13 +180,11 @@ O arquivo com a **Estrutura Corporativa** deve ser oferecido a este package em f
 
 &nbsp;
 
-Para realizar a importação, são expostos os seguintes métodos:
+Corporate expõe o seguinte método para realizar a importação:
 
 &nbsp;
 
 ✏️ **import**
-
-Assinatura e uso: Importa a estrutura definida no arquivo informado
 
 ```php
 use FruiVita\Corporate\Facades\Corporate;
@@ -201,8 +199,6 @@ use FruiVita\Corporate\Facades\Corporate;
  */
 Corporate::import($file_path);
 ```
-
-Retorno: void
 
 &nbsp;
 
@@ -247,7 +243,7 @@ Por favor, veja [CONTRIBUTING](CONTRIBUTING.md) para maiores detalhes sobre como
 
 Para garantir que todos sejam bem vindos a contribuir com este projeto open-source, por favor leia e siga o [Código de Conduta](CODE_OF_CONDUCT.md).
 
-⬆️ [Back](#conteúdo)
+⬆️ [Voltar](#table-of-contents)
 
 &nbsp;
 
@@ -265,7 +261,7 @@ A versão mais recente receberá suporte e atualizações sempre que houver nece
 
 | Version | PHP     | Release    | End of Life |
 |---------|---------|------------|-------------|
-| 1.0     | ^8.0    | 07/04/2022 | dd-mm-yyyy  |
+| 1.0     | ^8.0    | 07-04-2022 | dd-mm-yyyy  |
 
 🐛 Encontrou um bug?!?! Abra um **[issue](/../../issues/new?assignees=fcno&labels=bug%2Ctriage&template=bug_report.yml&title=%5BA+concise+title+for+the+bug%5D)**.
 
@@ -275,7 +271,7 @@ A versão mais recente receberá suporte e atualizações sempre que houver nece
 
 ## Roadmap
 
-> ✨ Alguma ideia nova?!?! Inicie **[uma discussão](/../../discussions/new?category=ideas)**.
+> ✨ Alguma ideia nova?!?! Inicie **[uma discussão](https://github.com/orgs/fruivita/discussions/new?category=ideas&title=[Corporate])**.
 
 A lista a seguir contém as necessidades de melhorias identificadas e aprovadas que serão implementadas na primeira janela de oportunidade.
 
@@ -299,7 +295,7 @@ A lista a seguir contém as necessidades de melhorias identificadas e aprovadas 
 
 👋 Agradeço às pessoas e organizações abaixo por terem doado seu tempo na construção de projetos open-source que foram usados neste package.
 
-- ❤️ [Laravel](https://github.com/laravel) pelos packages:
+- ❤️ [The Laravel Framework](https://github.com/laravel) pelos packages:
 
   - [illuminate/collections](https://github.com/illuminate/collections)
 

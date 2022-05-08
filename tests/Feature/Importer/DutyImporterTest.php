@@ -9,23 +9,8 @@ use FruiVita\Corporate\Importer\DutyImporter;
 use FruiVita\Corporate\Models\Duty;
 use Illuminate\Support\Facades\Log;
 
-test('make retorna o objeto da classe', function () {
-    expect(DutyImporter::make())->toBeInstanceOf(DutyImporter::class);
-});
-
-test('consegue importar as funções do arquivo corporativo', function () {
-    // forçar a execução de duas queries em pontos distintos e testá-las
-    config(['corporate.maxupsert' => 2]);
-
-    DutyImporter::make()->import($this->file_path);
-
-    $duties = Duty::get();
-
-    expect($duties)->toHaveCount(3)
-    ->and($duties->pluck('name'))->toMatchArray(['Função 1', 'Função 2', 'Função 3']);
-});
-
-test('cria os logs para as funções inválidas', function () {
+// Failure
+test('creates the logs for invalid duties', function () {
     Log::shouldReceive('log')
         ->times(6)
         ->withArgs(
@@ -37,4 +22,21 @@ test('cria os logs para as funções inválidas', function () {
     DutyImporter::make()->import($this->file_path);
 
     expect(Duty::count())->toBe(3);
+});
+
+// Happy path
+test('make returns the class object', function () {
+    expect(DutyImporter::make())->toBeInstanceOf(DutyImporter::class);
+});
+
+test('import duties from the corporate file', function () {
+    // force the execution of two queries at different points and test them
+    config(['corporate.maxupsert' => 2]);
+
+    DutyImporter::make()->import($this->file_path);
+
+    $duties = Duty::get();
+
+    expect($duties)->toHaveCount(3)
+    ->and($duties->pluck('name'))->toMatchArray(['Função 1', 'Função 2', 'Função 3']);
 });

@@ -5,7 +5,7 @@ namespace FruiVita\Corporate\Exceptions;
 use Exception;
 
 /**
- * Tipo de arquivo não suportado.
+ * Unsupported file type.
  *
  * @see https://laravel.com/docs/9.x/errors
  */

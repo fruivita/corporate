@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Cargo de um determinada usuário.
+ * Duty (Cargo) of a given user.
  *
  * @see https://laravel.com/docs/9.x/eloquent
  */
@@ -21,9 +21,9 @@ class Occupation extends Model
     public $incrementing = false;
 
     /**
-     * Usuários ocupantes de um determinado cargo.
+     * Users with a certain occupation.
      *
-     * Relacionamento occupation (1:N) user.
+     * Relationship occupation (1:N) user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

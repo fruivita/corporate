@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Usuário (pessoa).
+ * User (pessoa).
  *
- * Notar que o tratamento dado à pessoa, presume-a como usuária da aplicação.
+ * Note that the treatment given to the person (pessoa) presumes him/her as a
+ * user of the application.
  *
  * @see https://laravel.com/docs/9.x/eloquent
  */
@@ -21,9 +22,9 @@ class User extends Authenticatable
     protected $fillable = ['username', 'name', 'department_id', 'occupation_id', 'duty_id'];
 
     /**
-     * Lotação de um determinado usuário.
+     * Department of a given user.
      *
-     * Relacionamento user (N:1) department.
+     * Relationship user (N:1) department.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -33,9 +34,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Cargo de um determinado usuário.
+     * Occupation of a given user.
      *
-     * Relacionamento user (N:1) occupation.
+     * Relationship user (N:1) occupation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -45,9 +46,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Função de um determinado usuário.
+     * Duty of a given user.
      *
-     * Relacionamento user (N:1) duty.
+     * Relationship user (N:1) duty.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
