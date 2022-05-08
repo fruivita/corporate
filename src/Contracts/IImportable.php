@@ -5,16 +5,16 @@ namespace FruiVita\Corporate\Contracts;
 interface IImportable
 {
     /**
-     * Executa a importação.
+     * Run the import.
      *
-     * Importa, na sequência abaixo, as seguintes entidades:
+     * Import, in the sequence below, the following models:
      * 1. Occupation (Cargo)
      * 2. Duty (Função)
      * 3. Department (Lotação)
      * 4. User (Pessoa)
      *
-     * @param string $file_path full path do arquivo XML com a estrutura
-     *                          corporativa que será importado
+     * @param string $file_path full path of the XML file with the corporate
+     *                          structure that will be imported
      *
      * @throws \FruiVita\Corporate\Exceptions\FileNotReadableException
      * @throws \FruiVita\Corporate\Exceptions\UnsupportedFileTypeException

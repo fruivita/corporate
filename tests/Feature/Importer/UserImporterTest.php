@@ -12,26 +12,8 @@ use FruiVita\Corporate\Importer\UserImporter;
 use FruiVita\Corporate\Models\User;
 use Illuminate\Support\Facades\Log;
 
-test('make retorna o objeto da classe', function () {
-    expect(UserImporter::make())->toBeInstanceOf(UserImporter::class);
-});
-
-test('consegue importar as pessoas/usuários do arquivo corporativo', function () {
-    // forçar a execução de duas queries em pontos distintos e testá-las
-    config(['corporate.maxupsert' => 2]);
-
-    OccupationImporter::make()->import($this->file_path);
-    DutyImporter::make()->import($this->file_path);
-    DepartmentImporter::make()->import($this->file_path);
-    UserImporter::make()->import($this->file_path);
-
-    $users = User::get();
-
-    expect($users)->toHaveCount(5)
-    ->and($users->pluck('name'))->toMatchArray(['Pessoa 1', 'Pessoa 2', 'Pessoa 3', 'Pessoa 4', 'Pessoa 5']);
-});
-
-test('cria os logs para as pessoas/usuários inválidos', function () {
+// Failure
+test('creates the logs for invalid users', function () {
     OccupationImporter::make()->import($this->file_path);
     DutyImporter::make()->import($this->file_path);
     DepartmentImporter::make()->import($this->file_path);
@@ -48,3 +30,24 @@ test('cria os logs para as pessoas/usuários inválidos', function () {
 
     expect(User::count())->toBe(5);
 });
+
+// Happy path
+test('make returns the class object', function () {
+    expect(UserImporter::make())->toBeInstanceOf(UserImporter::class);
+});
+
+test('import users from the corporate file', function () {
+    // force the execution of two queries at different points and test them
+    config(['corporate.maxupsert' => 2]);
+
+    OccupationImporter::make()->import($this->file_path);
+    DutyImporter::make()->import($this->file_path);
+    DepartmentImporter::make()->import($this->file_path);
+    UserImporter::make()->import($this->file_path);
+
+    $users = User::get();
+
+    expect($users)->toHaveCount(5)
+    ->and($users->pluck('name'))->toMatchArray(['Pessoa 1', 'Pessoa 2', 'Pessoa 3', 'Pessoa 4', 'Pessoa 5']);
+});
+

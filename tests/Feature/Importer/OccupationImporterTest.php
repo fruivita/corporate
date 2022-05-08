@@ -9,23 +9,8 @@ use FruiVita\Corporate\Importer\OccupationImporter;
 use FruiVita\Corporate\Models\Occupation;
 use Illuminate\Support\Facades\Log;
 
-test('make retorna o objeto da classe', function () {
-    expect(OccupationImporter::make())->toBeInstanceOf(OccupationImporter::class);
-});
-
-test('consegue importar os cargos do arquivo corporativo', function () {
-    // forçar a execução de duas queries em pontos distintos e testá-las
-    config(['corporate.maxupsert' => 2]);
-
-    OccupationImporter::make()->import($this->file_path);
-
-    $occupations = Occupation::get();
-
-    expect($occupations)->toHaveCount(3)
-    ->and($occupations->pluck('name'))->toMatchArray(['Cargo 1', 'Cargo 2', 'Cargo 3']);
-});
-
-test('cria os logs para as cargos inválidas', function () {
+// Failure
+test('creates the logs for invalid occupations', function () {
     Log::shouldReceive('log')
         ->times(6)
         ->withArgs(
@@ -37,4 +22,21 @@ test('cria os logs para as cargos inválidas', function () {
     OccupationImporter::make()->import($this->file_path);
 
     expect(Occupation::count())->toBe(3);
+});
+
+// Happy path
+test('make returns the class object', function () {
+    expect(OccupationImporter::make())->toBeInstanceOf(OccupationImporter::class);
+});
+
+test('import occupations from the corporate file', function () {
+    // force the execution of two queries at different points and test them
+    config(['corporate.maxupsert' => 2]);
+
+    OccupationImporter::make()->import($this->file_path);
+
+    $occupations = Occupation::get();
+
+    expect($occupations)->toHaveCount(3)
+    ->and($occupations->pluck('name'))->toMatchArray(['Cargo 1', 'Cargo 2', 'Cargo 3']);
 });

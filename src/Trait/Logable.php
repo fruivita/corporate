@@ -5,14 +5,14 @@ namespace FruiVita\Corporate\Trait;
 trait Logable
 {
     /**
-     * Nível do log.
+     * Log level.
      *
      * @var string
      */
     public $level = 'info';
 
     /**
-     * Determina se deve-se logar o início e o fim do processo de importação.
+     * Determines whether to log the beginning and end of the import process.
      *
      * @return bool
      */

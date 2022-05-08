@@ -10,44 +10,45 @@ use Illuminate\Support\Facades\Validator;
 abstract class BaseImporter implements IImportable
 {
     /**
-     * Regras que serão aplicadas a cada campo do nó XML que será importado.
+     * Rules that will be applied to each field of the XML node that will be
+     * imported.
      *
      * @var array<string, mixed[]> assoc array
      */
     protected $rules;
 
     /**
-     * Nome do nó XML que será importado.
+     * Name of the XML node that will be imported.
      *
      * @var string
      */
     protected $node;
 
     /**
-     * Atributos (campos) para se considerar o objeto único no banco de dados.
+     * Attributes (fields) to consider the unique object in the database.
      *
      * @var string[]
      */
     protected $unique;
 
     /**
-     * Atributos (campos) que devem ser atualizados no banco de dados se o
-     * objeto já estiver persistido.
+     * Attributes (fields) that must be updated in the database if the object
+     * is already persisted.
      *
      * @var string[]
      */
     protected $fields_to_update;
 
     /**
-     * Path completo para o arquivo XML com a estrutura corporativa que será
-     * importado.
+     * Full path to the XML file with the corporate structure that will be
+     * imported.
      *
      * @var string
      */
     protected $file_path;
 
     /**
-     * Quantidade de registros que será inserida/atualizada em uma única query.
+     * Number of records that will be inserted/updated in a single query.
      *
      * @var int
      */
@@ -65,7 +66,7 @@ abstract class BaseImporter implements IImportable
     }
 
     /**
-     * Define o file path do arquivo que será importado.
+     * Set the file path of the file to be imported.
      *
      * @param string $file_path full path
      *
@@ -79,8 +80,8 @@ abstract class BaseImporter implements IImportable
     }
 
     /**
-     * Define a quantidade de registros que será inserida/atualizada em uma
-     * única query.
+     * Set the number of records that will be inserted/updated in a single
+     * query.
      *
      * @return static
      */
@@ -96,24 +97,24 @@ abstract class BaseImporter implements IImportable
     }
 
     /**
-     * Extrai do nó XML os campos de interesse para o objeto.
+     * Extracts the fields of interest for the object from the XML node.
      *
-     * O array conterá os campos de interesse (key), e os respectivos valores
-     * (value) extraídos do nó xml informado.
+     * The array will contain the fields of interest (key), and the respective
+     * values extracted from the informed xml node.
      *
      * Ex.: [
      *     'id' => '10',
-     *     'nome' => 'Fábio Cassiano',
+     *     'name' => 'foo',
      * ]
      *
-     * @param \XMLReader $node nó de onde serão extraídos os valores
+     * @param \XMLReader $node node from which the values will be extracted
      *
      * @return array<string, string> array assoc
      */
     abstract protected function extractFieldsFromNode(\XMLReader $node);
 
     /**
-     * Faz a persistência dos itens validados.
+     * Persistence of validated items.
      *
      * @param \Illuminate\Support\Collection $validated
      *
@@ -122,11 +123,11 @@ abstract class BaseImporter implements IImportable
     abstract protected function save(Collection $validated);
 
     /**
-     * Posiciona o XMLReader no primeiro nó XML que deverá ser trabalhado.
+     * Places the XMLReader on the first XML node to be worked on.
      *
-     * Ex: se o desejo for ler os **cargos**, o arquivo XML será lido pelo
-     * **XMLReader** retornando o ponteiro apontando para o primeiro nó com o
-     * nome **cargo** para que eles sejam processados.
+     * Ex: if the desire is to read the **foo**, the XML file will be read by
+     * the **XMLReader**, returning the pointer pointing to the first node with
+     * the name **foo** for them to be processed.
      *
      * @return \XMLReader
      *
@@ -145,13 +146,13 @@ abstract class BaseImporter implements IImportable
     }
 
     /**
-     * Executa a importação propriamente dita.
+     * Executes the actual import.
      *
-     * A execução é feita por meio dos seguintes passos:
-     * - Ler o arquivo;
-     * - Extrair os dados do nó xml de interesse;
-     * - Validar os dados extraídos e, se preciso, logar as inconsistências;
-     * - Acionar o método responsável pela persistência.
+     * The execution is done through the following steps:
+     * - Read the file;
+     * - Extract the data from the xml node of interest;
+     * - Validate the extracted data and, if necessary, log inconsistencies;
+     * - Call the method responsible for persistence.
      *
      * @return static
      *
@@ -173,7 +174,7 @@ abstract class BaseImporter implements IImportable
                 $validated->push($valid);
             }
 
-            // salva a quantidade determinada de registros por vez
+            // save the specified number of records at a time
             if ($validated->count() >= $this->max_upsert) {
                 $this->save($validated);
                 $validated = collect();
@@ -185,16 +186,16 @@ abstract class BaseImporter implements IImportable
 
         $xml->close();
 
-        // salva o saldo dos registros
+        // save the rest of the records
         $this->save($validated);
 
         return $this;
     }
 
     /**
-     * Retorna os inputs válidos de acordo com as rules de importação.
+     * Returns valid inputs according to import rules.
      *
-     * Em caso de falha de validação, retorna null e loga as falhas.
+     * In case of validation failure, it returns null and logs the failures.
      *
      * @param array<string, string> $inputs assoc array
      *

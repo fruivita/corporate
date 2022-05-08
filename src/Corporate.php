@@ -17,15 +17,15 @@ class Corporate implements IImportable
     use Logable;
 
     /**
-     * Path completo para o arquivo XML com a estrutura corporativa que será
-     * importado.
+     * Full path to the XML file with the corporate structure that will be
+     * imported.
      *
      * @var string
      */
     protected $file_path;
 
     /**
-     * Mimes tipes suportados.
+     * Mime types supported.
      *
      * @var string[]
      */
@@ -47,7 +47,7 @@ class Corporate implements IImportable
     }
 
     /**
-     * Verfica se o arquivo informado existe e pode ser lido.
+     * Checks if the given file exists and can be read.
      *
      * @param string $file_path full path
      *
@@ -63,7 +63,7 @@ class Corporate implements IImportable
     }
 
     /**
-     * Verfica se o mime type do arquivo é permitido.
+     * Checks if the mime type of the file is allowed.
      *
      * @param string $file_path full path
      *
@@ -78,7 +78,7 @@ class Corporate implements IImportable
     }
 
     /**
-     * Define o file path do arquivo que será importado.
+     * Set the file path of the file to be imported.
      *
      * @param string $file_path full path
      *
@@ -92,7 +92,7 @@ class Corporate implements IImportable
     }
 
     /**
-     * Tratativas iniciais da importação.
+     * Prepare the import.
      *
      * @return static
      */
@@ -112,7 +112,7 @@ class Corporate implements IImportable
     }
 
     /**
-     * Aciona os importadores.
+     * Run the import.
      *
      * @return static
      */
@@ -127,7 +127,7 @@ class Corporate implements IImportable
     }
 
     /**
-     * Tratativas finais da importação.
+     * Finishes the import.
      *
      * @return static
      */

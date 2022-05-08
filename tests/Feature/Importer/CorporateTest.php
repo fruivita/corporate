@@ -14,38 +14,40 @@ use FruiVita\Corporate\Models\Occupation;
 use FruiVita\Corporate\Models\User;
 use Illuminate\Support\Facades\Log;
 
-test('lança exceção ao executar a importação com arquivo inválido', function ($file_name) {
+// Exceptions
+test('throws exception when running import with invalid file', function ($filename) {
     expect(
-        fn () => Corporate::import($file_name)
+        fn () => Corporate::import($filename)
     )->toThrow(FileNotReadableException::class);
 })->with([
-    'inexistente.xml', // inexistente
-    '',                // falso boleano
+    'foo.xml',
+    '',
 ]);
 
-test('lança exceção ao executar a importação com arquivo de mime type não suportado', function () {
-    $file_name = 'corporate.txt';
-    $this->file_system->put($file_name, 'dumb content');
-    $path = $this->file_system->path($file_name);
+test('throws exception when running import with unsupported mime type file', function () {
+    $filename = 'corporate.txt';
+    $this->file_system->put($filename, 'dumb content');
+    $path = $this->file_system->path($filename);
 
     expect(
         fn () => Corporate::import($path)
     )->toThrow(UnsupportedFileTypeException::class, 'XML');
 });
 
-test('usa o maxupsert default se inválido e cria apenas os logs de validação se o package for configurado para não logar', function () {
-    config(['corporate.maxupsert' => -1]); // invalido, pois menor igual a zero
+// Happy path
+test('if invalid, use the default maxupsert. Also, creates the minimum logs (validation), even if configured to not log.', function () {
+    config(['corporate.maxupsert' => -1]); // invalid. less then or equal to zero
     config(['corporate.logging' => false]);
 
     $infos
-        = 0  // início da importação
-        + 0; // fim da importação
+        = 0  // Start of import
+        + 0; // End of import
 
     $warnings
-        = 6   // cargos inválidos
-        + 6   // funções inválidas
-        + 18  // lotações inválidas
-        + 13; // fim da importação
+        = 6   // Ocuppation (Cargo) invalid
+        + 6   // Duty (função comissionada) invalid
+        + 18  // Department (lotação) invalid
+        + 13; // User (Pessoa) invalid
 
     Log::shouldReceive('log')
         ->times($infos)
@@ -71,16 +73,16 @@ test('usa o maxupsert default se inválido e cria apenas os logs de validação 
     ->and(User::count())->toBe(5);
 });
 
-test('importa a estrutura corporativa completa e cria todos os logs', function () {
+test('import the complete corporate structure and create all logs', function () {
     $infos
-        = 1  // início da importação
-        + 1; // fim da importação
+        = 1  // Start of import
+        + 1; // End of import
 
     $warnings
-        = 6   // cargos inválidos
-        + 6   // funções inválidas
-        + 18  // lotações inválidas
-        + 13; // fim da importação
+        = 6   // Ocuppation (Cargo) invalid
+        + 6   // Duty (função comissionada) invalid
+        + 18  // Department (Lotação) invalid
+        + 13; // User (Pessoa) invalid
 
     Log::shouldReceive('log')
         ->times($infos)

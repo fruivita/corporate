@@ -7,13 +7,14 @@
 use FruiVita\Corporate\Exceptions\FileNotReadableException;
 use Illuminate\Support\Facades\App;
 
-test('exception com mensagem default em inglês', function () {
+// Happy path
+test('exception with default message in English', function () {
     $exception = new FileNotReadableException();
 
     expect($exception->getMessage())->toBe('The file entered could not be read');
 });
 
-test('exception com mensagem default em português alterando o locale', function () {
+test('exception with default message in Portuguese changing the locale', function () {
     App::setLocale('pt-br');
 
     $exception = new FileNotReadableException();

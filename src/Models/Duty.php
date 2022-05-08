@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Função comissionada de um determinada usuário.
+ * Duty (Função comissionada) of a given user.
  *
  * @see https://laravel.com/docs/9.x/eloquent
  */
@@ -21,9 +21,9 @@ class Duty extends Model
     public $incrementing = false;
 
     /**
-     * Usuários ocupantes de uma determinada função.
+     * Users with a certain duty.
      *
-     * Relacionamento duty (1:N) user.
+     * Relationship duty (1:N) user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
