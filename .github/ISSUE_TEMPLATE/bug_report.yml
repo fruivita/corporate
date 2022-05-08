@@ -1,5 +1,5 @@
 ###############################################################################
-# Sobre o issue forms                                                         #
+# About issue forms                                                           #
 # https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository#creating-issue-forms
 # https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
 ###############################################################################
@@ -34,7 +34,7 @@ body:
     attributes:
       label: Operating system
       description: "Which operating system this package is running on? Please provide the version as well."
-      placeholder: "Windows 10 Pro 21H1"
+      placeholder: "Ubuntu 7.10"
     validations:
       required: true
 
