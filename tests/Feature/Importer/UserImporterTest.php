@@ -50,4 +50,3 @@ test('import users from the corporate file', function () {
     expect($users)->toHaveCount(5)
     ->and($users->pluck('name'))->toMatchArray(['Pessoa 1', 'Pessoa 2', 'Pessoa 3', 'Pessoa 4', 'Pessoa 5']);
 });
-
