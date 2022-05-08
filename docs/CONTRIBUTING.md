@@ -76,6 +76,7 @@ If the project maintainer has any additional requirements, you will find them li
     - log
     - model
     - npm
+    - policies
     - route
     - validation
     - view
