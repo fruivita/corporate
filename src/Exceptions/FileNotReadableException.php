@@ -5,7 +5,7 @@ namespace FruiVita\Corporate\Exceptions;
 use Exception;
 
 /**
- * Arquivo não pôde ser lido.
+ * File could not be read.
  *
  * @see https://laravel.com/docs/9.x/errors
  */

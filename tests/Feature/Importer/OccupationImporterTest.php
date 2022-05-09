@@ -9,12 +9,26 @@ use FruiVita\Corporate\Importer\OccupationImporter;
 use FruiVita\Corporate\Models\Occupation;
 use Illuminate\Support\Facades\Log;
 
-test('make retorna o objeto da classe', function () {
+// Failure
+test('creates the logs for invalid occupations', function () {
+    Log::spy();
+
+    OccupationImporter::make()->import($this->file_path);
+
+    Log::shouldHaveReceived('log')
+    ->withArgs(fn ($level, $message) => $level === 'warning' && $message === __('Validation failed'))
+    ->times(6);
+
+    expect(Occupation::count())->toBe(3);
+});
+
+// Happy path
+test('make returns the class object', function () {
     expect(OccupationImporter::make())->toBeInstanceOf(OccupationImporter::class);
 });
 
-test('consegue importar os cargos do arquivo corporativo', function () {
-    // forçar a execução de duas queries em pontos distintos e testá-las
+test('import occupations from the corporate file', function () {
+    // force the execution of two queries at different points and test them
     config(['corporate.maxupsert' => 2]);
 
     OccupationImporter::make()->import($this->file_path);
@@ -23,18 +37,4 @@ test('consegue importar os cargos do arquivo corporativo', function () {
 
     expect($occupations)->toHaveCount(3)
     ->and($occupations->pluck('name'))->toMatchArray(['Cargo 1', 'Cargo 2', 'Cargo 3']);
-});
-
-test('cria os logs para as cargos inválidas', function () {
-    Log::shouldReceive('log')
-        ->times(6)
-        ->withArgs(
-            function ($level) {
-                return $level === 'warning';
-            }
-        );
-
-    OccupationImporter::make()->import($this->file_path);
-
-    expect(Occupation::count())->toBe(3);
 });

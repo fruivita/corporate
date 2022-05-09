@@ -14,56 +14,52 @@ use FruiVita\Corporate\Models\Occupation;
 use FruiVita\Corporate\Models\User;
 use Illuminate\Support\Facades\Log;
 
-test('lança exceção ao executar a importação com arquivo inválido', function ($file_name) {
+// Exceptions
+test('throws exception when running import with invalid file', function ($filename) {
     expect(
-        fn () => Corporate::import($file_name)
+        fn () => Corporate::import($filename)
     )->toThrow(FileNotReadableException::class);
 })->with([
-    'inexistente.xml', // inexistente
-    '',                // falso boleano
+    'foo.xml',
+    '',
 ]);
 
-test('lança exceção ao executar a importação com arquivo de mime type não suportado', function () {
-    $file_name = 'corporate.txt';
-    $this->file_system->put($file_name, 'dumb content');
-    $path = $this->file_system->path($file_name);
+test('throws exception when running import with unsupported mime type file', function () {
+    $filename = 'corporate.txt';
+    $this->file_system->put($filename, 'dumb content');
+    $path = $this->file_system->path($filename);
 
     expect(
         fn () => Corporate::import($path)
     )->toThrow(UnsupportedFileTypeException::class, 'XML');
 });
 
-test('usa o maxupsert default se inválido e cria apenas os logs de validação se o package for configurado para não logar', function () {
-    config(['corporate.maxupsert' => -1]); // invalido, pois menor igual a zero
+// Happy path
+test('if invalid, use the default maxupsert. Also, creates the minimum logs (validation), even if configured to not log.', function () {
+    config(['corporate.maxupsert' => -1]); // invalid. less then or equal to zero
     config(['corporate.logging' => false]);
 
-    $infos
-        = 0  // início da importação
-        + 0; // fim da importação
-
     $warnings
-        = 6   // cargos inválidos
-        + 6   // funções inválidas
-        + 18  // lotações inválidas
-        + 13; // fim da importação
+        = 6   // Ocuppation (Cargo) invalid
+        + 6   // Duty (função comissionada) invalid
+        + 18  // Department (lotação) invalid
+        + 13; // User (Pessoa) invalid
 
-    Log::shouldReceive('log')
-        ->times($infos)
-        ->withArgs(
-            function ($level) {
-                return $level === 'info';
-            }
-        );
-
-    Log::shouldReceive('log')
-        ->times($warnings)
-        ->withArgs(
-            function ($level) {
-                return $level === 'warning';
-            }
-        );
+    Log::spy();
 
     Corporate::import($this->file_path);
+
+    Log::shouldNotHaveReceived(
+        'log',
+        fn ($level, $message) => $level === 'info' && $message === __('Start of corporate structure import')
+    );
+    Log::shouldNotHaveReceived(
+        'log',
+        fn ($level, $message) => $level === 'info' && $message === __('End of corporate structure import')
+    );
+    Log::shouldHaveReceived('log')
+    ->withArgs(fn ($level, $message) => $level === 'warning' && $message === __('Validation failed'))
+    ->times($warnings);
 
     expect(Occupation::count())->toBe(3)
     ->and(Duty::count())->toBe(3)
@@ -71,34 +67,26 @@ test('usa o maxupsert default se inválido e cria apenas os logs de validação 
     ->and(User::count())->toBe(5);
 });
 
-test('importa a estrutura corporativa completa e cria todos os logs', function () {
-    $infos
-        = 1  // início da importação
-        + 1; // fim da importação
-
+test('import the complete corporate structure and create all logs', function () {
     $warnings
-        = 6   // cargos inválidos
-        + 6   // funções inválidas
-        + 18  // lotações inválidas
-        + 13; // fim da importação
+        = 6   // Ocuppation (Cargo) invalid
+        + 6   // Duty (função comissionada) invalid
+        + 18  // Department (Lotação) invalid
+        + 13; // User (Pessoa) invalid
 
-    Log::shouldReceive('log')
-        ->times($infos)
-        ->withArgs(
-            function ($level) {
-                return $level === 'info';
-            }
-        );
-
-    Log::shouldReceive('log')
-        ->times($warnings)
-        ->withArgs(
-            function ($level) {
-                return $level === 'warning';
-            }
-        );
+    Log::spy();
 
     Corporate::import($this->file_path);
+
+    Log::shouldHaveReceived('log')
+    ->withArgs(fn ($level, $message) => $level === 'info' && $message === __('Start of corporate structure import'))
+    ->once();
+    Log::shouldHaveReceived('log')
+    ->withArgs(fn ($level, $message) => $level === 'warning' && $message === __('Validation failed'))
+    ->times($warnings);
+    Log::shouldHaveReceived('log')
+    ->withArgs(fn ($level, $message) => $level === 'info' && $message === __('End of corporate structure import'))
+    ->once();
 
     expect(Occupation::count())->toBe(3)
     ->and(Duty::count())->toBe(3)

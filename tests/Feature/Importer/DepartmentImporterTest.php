@@ -9,12 +9,26 @@ use FruiVita\Corporate\Importer\DepartmentImporter;
 use FruiVita\Corporate\Models\Department;
 use Illuminate\Support\Facades\Log;
 
-test('make retorna o objeto da classe', function () {
+// Failure
+test('creates the logs for invalid departments', function () {
+    Log::spy();
+
+    DepartmentImporter::make()->import($this->file_path);
+
+    Log::shouldHaveReceived('log')
+    ->withArgs(fn ($level, $message) => $level === 'warning' && $message === __('Validation failed'))
+    ->times(18);
+
+    expect(Department::count())->toBe(5);
+});
+
+// Happy path
+test('make returns the class object', function () {
     expect(DepartmentImporter::make())->toBeInstanceOf(DepartmentImporter::class);
 });
 
-test('consegue importar as lotações do arquivo corporativo e cria os autorelacionamentos', function () {
-    // forçar a execução de duas queries em pontos distintos e testá-las
+test('import departments from the corporate file and create self-relationships', function () {
+    // force the execution of two queries at different points and test them
     config(['corporate.maxupsert' => 2]);
 
     DepartmentImporter::make()->import($this->file_path);
@@ -37,18 +51,4 @@ test('consegue importar as lotações do arquivo corporativo e cria os autorelac
             ->find('1')
             ->name
     )->toBe('Lotação 1');
-});
-
-test('cria os logs para as lotações inválidos', function () {
-    Log::shouldReceive('log')
-        ->times(18)
-        ->withArgs(
-            function ($level) {
-                return $level === 'warning';
-            }
-        );
-
-    DepartmentImporter::make()->import($this->file_path);
-
-    expect(Department::count())->toBe(5);
 });

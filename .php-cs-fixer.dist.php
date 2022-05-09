@@ -7,6 +7,7 @@ $finder = \PhpCsFixer\Finder::create()
     ->in([
         __DIR__ . DIRECTORY_SEPARATOR . 'config',
         __DIR__ . DIRECTORY_SEPARATOR . 'database',
+        __DIR__ . DIRECTORY_SEPARATOR . 'lang',
         __DIR__ . DIRECTORY_SEPARATOR . 'src',
         __DIR__ . DIRECTORY_SEPARATOR . 'tests',
     ])
@@ -32,6 +33,7 @@ $rules = [
         'null_adjustment' => 'always_last', 'sort_algorithm' => 'alpha',
     ],
     'phpdoc_var_annotation_correct_order' => true,
+    'ordered_traits' => true,
 ];
 
 return (new \PhpCsFixer\Config())

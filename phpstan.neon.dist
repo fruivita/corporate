@@ -6,6 +6,7 @@ parameters:
   paths:
     - config
     - database
+    - lang
     - src
     - tests
 
@@ -24,6 +25,9 @@ parameters:
   ignoreErrors:
     -
       message: '#Undefined variable: \$this#'
+      path: tests/*
+    -
+      message: '#Call to an undefined static method Illuminate\\Support\\Facades\\[a-zA-Z]+\:\:should[Not]*HaveReceived\(\)#'
       path: tests/*
 
   tmpDir: build/phpstan

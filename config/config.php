@@ -6,18 +6,18 @@ return [
     | Logging
     |-------------------------------------------------------------------------
     |
-    | Este package gera log para 04 cenários:
-    | - Início da importação
-    | - Fim da importação
-    | - Falha na importação
-    | - Inconsistências/falhas de validação nos dados
+    | This package generates log for 04 scenarios:
+    | - Start of import
+    | - End of import
+    | - Import failed
+    | - Data validation inconsistencies/failures
     |
-    | Se o logging for true, todos os cenários acima serão registrados no log
-    | utilizando o formato definido na aplicação.
-    | Isso é útil para monitor se o processo de importação está ocorrendo como
-    | esperado.
-    | Se false, não registrará log para os dois primeiros cenários, mas
-    | continuará para os demais, visto que não afetadas por essa configuração.
+    | If logging is true, all the above scenarios will be logged in the log
+    | using the format defined in the application.
+    | This is useful to monitor if the import process is proceeding as
+    | expected.
+    | If false, will not log for the first two scenarios, but will continue for
+    | others as they are not affected by this setting.
     |
     */
 
@@ -28,11 +28,11 @@ return [
     | Max Upsert
     | ------------------------------------------------------------------------
     |
-    | Quantidade padrão de objetos que serão persistidos no banco de dados por
+    | Default number of objects that will be persisted in the database per
     | query.
     |
-    | Se menor ou igual a zero, o package assumirá o valor default definido
-    | internamente.
+    | If less than or equal to zero, the package will assume the default value
+    | defined internally.
     |
     */
     'maxupsert' => 500,

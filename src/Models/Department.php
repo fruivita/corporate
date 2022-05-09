@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Lotação de um determinada usuário.
+ * Department (Lotação) of a given user.
  *
  * @see https://laravel.com/docs/9.x/eloquent
  */
@@ -21,9 +21,9 @@ class Department extends Model
     public $incrementing = false;
 
     /**
-     * Lotação pai de uma determinada lotação.
+     * Parent department of a given department.
      *
-     * Relacionamento department filha (N:1) department pai.
+     * Relationship child department (N:1) parent department.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -33,9 +33,9 @@ class Department extends Model
     }
 
     /**
-     * Lotações filhas de uma determinada lotação.
+     * Child departments of a given department.
      *
-     * Relacionamento department pai (1:N) department filhas.
+     * Relationship parent department (1:N) child department.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -45,9 +45,9 @@ class Department extends Model
     }
 
     /**
-     * Usuários lotadas em uma determinada lotação.
+     * Users assigned to a certain department.
      *
-     * Relacionamento department (1:N) user.
+     * Relationship department (1:N) user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
