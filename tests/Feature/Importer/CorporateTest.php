@@ -49,6 +49,14 @@ test('if invalid, use the default maxupsert. Also, creates the minimum logs (val
 
     Corporate::import($this->file_path);
 
+    Log::shouldNotHaveReceived(
+        'log',
+        fn ($level, $message) => $level === 'info' && $message === __('Start of corporate structure import')
+    );
+    Log::shouldNotHaveReceived(
+        'log',
+        fn ($level, $message) => $level === 'info' && $message === __('End of corporate structure import')
+    );
     Log::shouldHaveReceived('log')
     ->withArgs(fn ($level, $message) => $level === 'warning' && $message === __('Validation failed'))
     ->times($warnings);
