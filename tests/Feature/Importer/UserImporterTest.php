@@ -18,15 +18,13 @@ test('creates the logs for invalid users', function () {
     DutyImporter::make()->import($this->file_path);
     DepartmentImporter::make()->import($this->file_path);
 
-    Log::shouldReceive('log')
-        ->times(13)
-        ->withArgs(
-            function ($level) {
-                return $level === 'warning';
-            }
-        );
+    Log::spy();
 
     UserImporter::make()->import($this->file_path);
+
+    Log::shouldHaveReceived('log')
+    ->withArgs(fn ($level, $message) => $level === 'warning' && $message === __('Validation failed'))
+    ->times(13);
 
     expect(User::count())->toBe(5);
 });

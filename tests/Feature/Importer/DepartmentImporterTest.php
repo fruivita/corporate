@@ -11,15 +11,13 @@ use Illuminate\Support\Facades\Log;
 
 // Failure
 test('creates the logs for invalid departments', function () {
-    Log::shouldReceive('log')
-        ->times(18)
-        ->withArgs(
-            function ($level) {
-                return $level === 'warning';
-            }
-        );
+    Log::spy();
 
     DepartmentImporter::make()->import($this->file_path);
+
+    Log::shouldHaveReceived('log')
+    ->withArgs(fn ($level, $message) => $level === 'warning' && $message === __('Validation failed'))
+    ->times(18);
 
     expect(Department::count())->toBe(5);
 });

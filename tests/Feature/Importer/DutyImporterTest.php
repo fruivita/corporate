@@ -11,15 +11,13 @@ use Illuminate\Support\Facades\Log;
 
 // Failure
 test('creates the logs for invalid duties', function () {
-    Log::shouldReceive('log')
-        ->times(6)
-        ->withArgs(
-            function ($level) {
-                return $level === 'warning';
-            }
-        );
+    Log::spy();
 
     DutyImporter::make()->import($this->file_path);
+
+    Log::shouldHaveReceived('log')
+    ->withArgs(fn ($level, $message) => $level === 'warning' && $message === __('Validation failed'))
+    ->times(6);
 
     expect(Duty::count())->toBe(3);
 });
